@@ -7,10 +7,10 @@ const router = express.Router();
 
 router.route("/")
     .get(products.findAll)
-    .post(auth.verifyAdmin, uploadCloud.single('image'), products.create)
+    .post(auth.verifyToken ,auth.verifyAdmin, uploadCloud.single('image'), products.create)
 router.route("/:id")
     .get(products.findOne)
-    .put(auth.verifyAdmin, uploadCloud.single('image'), products.update)
-    .delete(auth.verifyAdmin, products.delete)
+    .put(auth.verifyToken ,auth.verifyAdmin, uploadCloud.single('image'), products.update)
+    .delete(auth.verifyToken ,auth.verifyAdmin, products.delete)
 
 module.exports = router;

@@ -77,7 +77,12 @@ class ProductService {
         const update = this.extractProductData(payload);
         const result = await this.Product.findOneAndUpdate(
             filter,
-            { $set: update },
+            {
+                $set: {
+                    ...update,
+                    price: parseInt(payload.price)
+                }
+            },
             { returnDocument: "after" }
         );
         return result.value;
