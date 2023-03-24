@@ -37,8 +37,21 @@ exports.create = async (req, res, next) => {
         return next(new ApiError(400, "Size can not be empty"));
     }
     try {
+        const ProductService = require("../services/product.service");
         const orderItemService = new OrderItemService(MongoDB.client);
-        const document = await orderItemService.create(req.body);
+        const productService = new ProductService(MongoDB.client);
+
+        const product = await productService.findById(req.body._productid);
+        let priceSize = 0;
+        if (req.body.size == "medium") {
+            priceSize = 10000
+        } else if(req.body.size == "big") {
+            priceSize = 16000
+        }
+
+        const document = await orderItemService.create({ 
+            ...req.body, price: (product.price + priceSize)
+        }); 
         return res.send(document);
     } catch (error) {
         console.log(error);
@@ -49,17 +62,17 @@ exports.create = async (req, res, next) => {
 };
 
 exports.update = async (req, res, next) => {
-    if (Object.keys(req.body).length === 0 ) {
+    if (Object.keys(req.body).length === 0) {
         return next(new ApiError(400, "Data to update can not be empty"));
     }
     try {
         const orderItemService = new OrderItemService(MongoDB.client);
 
         const document = await orderItemService.update(req.params.id, req.body);
-            if (!document) {
-                return new (ApiError(404, "Type not found"))
-            }
-        return res.send({ message: "Type was update successfully" });
+        if (!document) {
+            return new (ApiError(404, "OrderItem not found"))
+        }
+        return res.send({ message: "OrderItem was update successfully" });
     } catch (error) {
         return next(
             new ApiError(500, `Error update type with id=${req.params.id}`)
@@ -73,12 +86,12 @@ exports.delete = async (req, res, next) => {
 
         const document = await orderItemService.delete(req.params.id);
         if (!document) {
-            return next(new ApiError(404, "Type not found"));
+            return next(new ApiError(404, "OrderItem not found"));
         }
-        return res.send({ message: "Type was deleted successfully" });
+        return res.send({ message: "OrderItem was deleted successfully" });
     } catch (error) {
         return next(
-            new ApiError(500, `Could not delete type with id=${req.params.id}`)
+            new ApiError(500, `Could not delete orderitem with id=${req.params.id}`)
         );
     }
 };

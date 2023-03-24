@@ -9,7 +9,8 @@ class OrderItemService {
             _productid: payload._productid,
             number: payload.number,
             size: payload.size,
-            topping: payload.topping
+            amount: payload.amount,
+            // topping: payload.topping
         };
         Object.keys(orderitem).forEach(
             (key) => orderitem[key] === undefined && delete orderitem[key]
@@ -20,6 +21,7 @@ class OrderItemService {
 
     async findById(id) {
         const cursor = await this.OrderItem.aggregate([
+            { $match: { "_id": ObjectId.isValid(id) ? new ObjectId(id) : null } },
             { $addFields: { "_productid": { $toObjectId: "$_productid" } } },
             {
                 $lookup: {
@@ -29,7 +31,7 @@ class OrderItemService {
                     as: "product"
                 }
             },
-            { $match: { "_id": new ObjectId(id)  } }
+            { $unwind: "$product" }
         ]);
 
         return await cursor.toArray();
@@ -42,12 +44,13 @@ class OrderItemService {
 
     async create(payload) {
         const orderItem = this.extractOrderItemData(payload);
-
+        
         const result = await this.OrderItem.findOneAndUpdate(
             orderItem,
             {
                 $set: {
-                    number: parseInt(payload.number)
+                    number: parseInt(payload.number),
+                    amount: (parseInt(payload.number) * payload.price),
                 },
             },
             { returnDocument: "after", upsert: true }
@@ -62,7 +65,12 @@ class OrderItemService {
         const update = this.extractOrderItemData(payload);
         const result = await this.OrderItem.findOneAndUpdate(
             filter,
-            { $set: update },
+            {
+                $set: {
+                    ...update,
+                    number: parseInt(payload.number)
+                }
+            },
             { returnDocument: "after" }
         );
         return result.value;
