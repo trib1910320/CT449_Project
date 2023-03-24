@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.route("/")
     .get(types.findAll)
-    .post(auth.verifyAdmin, types.create)
+    .post(auth.verifyToken ,auth.verifyAdmin, types.create)
 router.route("/:id")
     .get(types.findOne)
-    .put(auth.verifyAdmin, types.update)
-    .delete(auth.verifyAdmin, types.delete)
+    .put(auth.verifyToken ,auth.verifyAdmin, types.update)
+    .delete(auth.verifyToken ,auth.verifyAdmin, types.delete)
 
 module.exports = router;
