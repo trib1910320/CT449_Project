@@ -62,7 +62,7 @@ class UserService {
         return result = await result.toArray();
     }
 
-    async findIsFavorite(productId, id) {
+    async findIsFavorite(id, productId) {
         const res = await this.User.findOne({
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
             favorites_list: productId
@@ -127,11 +127,11 @@ class UserService {
         );
     }
 
-    async favorite(UserID, id) {
+    async favorite(UserID, ProductId) {
         const filter = {
-            _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
+            _id: ObjectId.isValid(UserID) ? new ObjectId(UserID) : null,
         };
-        const update = { favorites_list: UserID };
+        const update = { favorites_list: ProductId };
         const result = await this.User.findOneAndUpdate(
             filter,
             { $push: update },
@@ -140,11 +140,11 @@ class UserService {
         return result.value;
     }
 
-    async unfavorite(UserID, id) {
+    async unfavorite(UserID, ProductId) {
         const filter = {
-            _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
+            _id: ObjectId.isValid(UserID) ? new ObjectId(UserID) : null,
         };
-        const update = { favorites_list: UserID };
+        const update = { favorites_list: ProductId };
         const result = await this.User.findOneAndUpdate(
             filter,
             { $pull: update },

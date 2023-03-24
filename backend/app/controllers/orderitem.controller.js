@@ -68,12 +68,23 @@ exports.update = async (req, res, next) => {
     try {
         const orderItemService = new OrderItemService(MongoDB.client);
 
-        const document = await orderItemService.update(req.params.id, req.body);
+        const orderItem = await orderItemService.findById(req.params.id);
+        let priceSize = 0;
+        if (req.body.size == "medium") {
+            priceSize = 10000
+        } else if(req.body.size == "big") {
+            priceSize = 16000
+        }
+
+        const document = await orderItemService.update(req.params.id,
+            { ...req.body, price: (orderItem[0].product.price + priceSize)}
+        );
         if (!document) {
-            return new (ApiError(404, "OrderItem not found"))
+            return new ApiError(404, "OrderItem not found")
         }
         return res.send({ message: "OrderItem was update successfully" });
     } catch (error) {
+        console.log(error);
         return next(
             new ApiError(500, `Error update type with id=${req.params.id}`)
         );

@@ -13,7 +13,7 @@ class ProductService {
             },
             describe: payload.describe,
             price: payload.price,
-            date_created: payload.date_created,
+            created_date: payload.created_date,
             _typeid: payload._typeid
         };
         Object.keys(product).forEach(
@@ -59,7 +59,7 @@ class ProductService {
             product,
             {
                 $set: {
-                    date_created: new Date().toLocaleString("vi-VN", {
+                    created_date: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
                     }),
                     price: parseInt(payload.price)

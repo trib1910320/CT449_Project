@@ -7,8 +7,11 @@ exports.findAll = async (req, res, next) => {
     try {
         const typeService = new TypeService(MongoDB.client);
         const { name } = req.query;
+        const { common } = req.query;
         if (name) {
             documents = await typeService.findByName(name)
+        } else if (common) {
+            documents = await typeService.findByCommon(common)
         } else {
             documents = await typeService.find({});
         }

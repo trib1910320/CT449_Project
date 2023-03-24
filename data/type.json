@@ -2,51 +2,51 @@
     {
         "common":"coffee",
         "name": "Coffee máy",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"coffee",
         "name": "Coffee Việt Name",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"coffee",
         "name": "Cold Brew",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"cloud",
         "name": "CloudFee",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"cloud",
         "name": "CloudTea",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"tea",
         "name": "Trà trái cây",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"tea",
         "name": "Trà sữa Macchiato",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"tea",
         "name": "Hi-Tea Healthy",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"cake",
         "name": "Bánh mặn",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     },
     {
         "common":"cake",
         "name": "Bánh ngọt",
-        "date_created": "16:22:01, 23/3/2023"
+        "created_date": "16:22:01, 23/3/2023"
     }
 ]

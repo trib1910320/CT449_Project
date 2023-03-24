@@ -7,7 +7,8 @@ class TypeService {
     extractTypeData(payload) {
         const type = {
             common: payload.common,
-            name: payload.name
+            name: payload.name,
+            created_date: payload.created_date,
         };
         Object.keys(type).forEach(
             (key) => type[key] === undefined && delete type[key]
@@ -22,9 +23,17 @@ class TypeService {
     }
 
     async findByName(name) {
-        return await this.Type.find({
+        const cursor = await this.Type.find({
             name: { $regex: new RegExp(name), $options: "i" },
         });
+        return await cursor.toArray();
+    }
+
+    async findByCommon(common) {
+        const cursor = await this.Type.find({
+            common: { $regex: new RegExp(common), $options: "i" },
+        });
+        return await cursor.toArray();
     }
 
     async findById(id) {
@@ -40,7 +49,7 @@ class TypeService {
             type,
             {
                 $set: {
-                    date_created: new Date().toLocaleString("vi-VN", {
+                    created_date: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
                     }),
                 }

@@ -68,7 +68,8 @@ class OrderItemService {
             {
                 $set: {
                     ...update,
-                    number: parseInt(payload.number)
+                    number: parseInt(payload.number),
+                    amount: (parseInt(payload.number) * payload.price),
                 }
             },
             { returnDocument: "after" }

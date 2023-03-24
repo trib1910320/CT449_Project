@@ -17,7 +17,7 @@ class OrderService {
             },
             note: payload.note,
             order_items: payload.order_items,
-            date_created: payload.date_created,
+            created_date: payload.created_date,
         };
         Object.keys(order).forEach(
             (key) => order[key] === undefined && delete order[key]
@@ -74,7 +74,7 @@ class OrderService {
             order,
             {
                 $set: {
-                    date_created: new Date().toLocaleString("vi-VN", {
+                    created_date: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
                     }),
                     delivery: false

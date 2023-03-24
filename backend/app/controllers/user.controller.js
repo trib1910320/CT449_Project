@@ -86,14 +86,14 @@ exports.delete = async (req, res, next) => {
 exports.favoriteProducts = async (req, res, next) => {
     try {
         const userService = new UserService(MongoDB.client);
-        const document = await userService.findFavoriteProducts(req.user.id);
+        const document = await userService.findById(req.user.id);
         if (!document) {
-            return next(new ApiError(404, "Product not found"));
+            return next(new ApiError(404, "Favorite products not found"));
         }
-        return res.send(document);
+        return res.send(document.favorites_list);
     } catch (error) {
         return next(
-            new ApiError(500, 'An error occurred while retrieving the products')
+            new ApiError(500, 'An error occurred while retrieving the favorite products')
         );
     }
 };
@@ -102,42 +102,43 @@ exports.favorite = async (req, res, next) => {
     try {
         const userService = new UserService(MongoDB.client);
 
-        const findIsFavorite = await userService.findIsFavorite(req.user.id, req.body.id);
+        const findIsFavorite = await userService.findIsFavorite(req.user.id, req.body.productid);
         if (findIsFavorite) {
-            return next(new ApiError(400, "User already exists in favorites list"));
+            return next(new ApiError(400, "Product already exists in favorites list"));
         }
 
-        const document = await userService.favorite(req.user.id, req.body.id);
+        const document = await userService.favorite(req.user.id, req.body.productid);
         if (!document) {
-            return next(new ApiError(404, "Post not found"))
+            return next(new ApiError(404, "Favorite products not found"))
         }
 
-        return res.send({ message: "Post was favorite successfully" });
+        return res.send({ message: "Product was favorite successfully" });
     } catch (error) {
         return next(
-            new ApiError(500, `Error favorite post with id=${req.body.id}`)
+            new ApiError(500, `Error favorite product with id=${req.body.productid}`)
         );
     }
 };
 
 exports.unfavorite = async (req, res, next) => {
     try {
-        const postService = new PostService(MongoDB.client);
+        const userService = new UserService(MongoDB.client);
 
-        const findIsFavorite = await postService.findIsFavorite(req.user.id, req.body.id);
+        const findIsFavorite = await userService.findIsFavorite(req.user.id, req.body.productid);
         if (!findIsFavorite) {
-            return next(new ApiError(400, "User does not exist in favorites list"));
+            return next(new ApiError(400, "Product does not exist in favorites list"));
         }
 
-        const document = await postService.unfavorite(req.user.id, req.body.id);
+        const document = await userService.unfavorite(req.user.id, req.body.productid);
         if (!document) {
-            return next(new ApiError(404, "Post not found"))
+            return next(new ApiError(404, "Favorite products not found"))
         }
 
-        return res.send({ message: "Post was unfavorite successfully" });
+        return res.send({ message: "Product was unfavorite successfully" });
     } catch (error) {
+        console.log(error);
         return next(
-            new ApiError(500, `Error unfavorite post with id=${req.body.id}`)
+            new ApiError(500, `Error unfavorite product with id=${req.body.productid}`)
         );
     }
 };

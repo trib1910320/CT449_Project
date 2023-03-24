@@ -52,7 +52,7 @@ exports.create = async (req, res, next) => {
             const orderitem = await orderItemService.findById(id);
             amount += orderitem[0].amount;
         }
-        console.log(amount);
+
         const document = await orderService.create({...req.body, amount: amount});
         return res.send(document);
     } catch (error) {
@@ -67,9 +67,17 @@ exports.update = async (req, res, next) => {
         return next(new ApiError(400, "Data to update can not be empty"));
     }
     try {
+        const OrderItemService = require("../services/orderitem.service");
+        const orderItemService = new OrderItemService(MongoDB.client);
         const orderService = new OrderService(MongoDB.client);
 
-        const document = await orderService.update(req.params.id, req.body);
+        let amount=0;
+        for (const id of req.body.order_items) {
+            const orderitem = await orderItemService.findById(id);
+            amount += orderitem[0].amount;
+        }
+
+        const document = await orderService.update(req.params.id, {...req.body, amount: amount});
             if (!document) {
                 return new (ApiError(404, "Order not found"))
             }
