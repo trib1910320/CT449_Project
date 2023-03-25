@@ -74,7 +74,14 @@ exports.update = async (req, res, next) => {
 
 exports.delete = async (req, res, next) => {
     try {
+        const ProductService = require("../services/product.service");
+        const productService = new ProductService(MongoDB.client);
         const typeService = new TypeService(MongoDB.client);
+
+        const findTypeInProduct = await productService.findByTypeID(req.params.id);
+        if(findTypeInProduct){
+            return next(new ApiError(400, "Type cannot be deleted"));
+        }
 
         const document = await typeService.delete(req.params.id);
         if (!document) {

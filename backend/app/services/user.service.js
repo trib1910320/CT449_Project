@@ -41,7 +41,7 @@ class UserService {
         const cursor = await this.User.find(filter);
         return await cursor.toArray();
     }
-    
+
     async findByName(name) {
         return await this.User.find({
             name: { $regex: new RegExp(name), $options: "i" },
@@ -62,10 +62,10 @@ class UserService {
         return result = await result.toArray();
     }
 
-    async findIsFavorite(id, productId) {
+    async findIsFavorite(id, productid) {
         const res = await this.User.findOne({
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
-            favorites_list: productId
+            favorites_list: productid ? productid.toString() : null
         });
         return res;
     }
@@ -191,13 +191,16 @@ class UserService {
     }
 
     async findUser(payload) {
-        return await this.User.findOne({
-            $or: [
-                { username: payload.username },
-                { email: payload.email },
-                { phone: payload.phone },
-            ]
-        })
+        if (await this.User.findOne({ username: payload.username })) {
+            return "Username already exists in the database"
+        }
+        if (await this.User.findOne({ email: payload.email })) {
+            return "Email already exists in the database"
+        }
+        if (await this.User.findOne({ phone: payload.phone })) {
+            return "Numberphone already exists in the database"
+        }
+        return null;
     }
 
 }

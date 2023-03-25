@@ -47,13 +47,13 @@ exports.create = async (req, res, next) => {
         const orderItemService = new OrderItemService(MongoDB.client);
         const orderService = new OrderService(MongoDB.client);
 
-        let amount=0;
+        let total_amount=0;
         for (const id of req.body.order_items) {
             const orderitem = await orderItemService.findById(id);
-            amount += orderitem[0].amount;
+            total_amount += orderitem[0].total_amount;
         }
 
-        const document = await orderService.create({...req.body, amount: amount});
+        const document = await orderService.create({...req.body, total_amount: total_amount});
         return res.send(document);
     } catch (error) {
         return next(
@@ -71,13 +71,13 @@ exports.update = async (req, res, next) => {
         const orderItemService = new OrderItemService(MongoDB.client);
         const orderService = new OrderService(MongoDB.client);
 
-        let amount=0;
+        let total_amount=0;
         for (const id of req.body.order_items) {
             const orderitem = await orderItemService.findById(id);
-            amount += orderitem[0].amount;
+            total_amount += orderitem[0].total_amount;
         }
 
-        const document = await orderService.update(req.params.id, {...req.body, amount: amount});
+        const document = await orderService.update(req.params.id, {...req.body, total_amount: total_amount});
             if (!document) {
                 return new (ApiError(404, "Order not found"))
             }

@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "641ac9cf4c2a1dca3beee25d"
+  },
+  "address": "An Giang",
+  "email": "letri123123@gmail.com",
+  "gender": true,
+  "name": "Le Tri",
+  "password": "$2a$10$3LlEgoYggGniFPgHPJxSfOS2jz6AxfgwWwILYPRU80Jr9sQ9Pjwde",
+  "phone": "0937425239",
+  "username": "letri123",
+  "admin": true,
+  "avatar": {
+    "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Monster1_bcq8zl.png"
+  },
+  "online": true,
+  "favorites_list": [
+    "641c15e7a49cbc84bca5a2dd",
+    "641c201ea49cbc84bca5a9de"
+  ]
+},{
+  "_id": {
+    "$oid": "641e8985e0d96760f3698dfe"
+  },
+  "address": "Cần Thơ",
+  "email": "admin123@gmail.com",
+  "gender": true,
+  "name": "Admin",
+  "password": "$2a$10$NVo7xcdMFSZbvD.FRkzFDOxL7QGWC4ILCi2QK78TtH0Rc5RWdBJVW",
+  "phone": "0937425249",
+  "username": "admin",
+  "admin": true,
+  "avatar": {
+    "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Panda_hhvl8s.png"
+  },
+  "online": false
+}]

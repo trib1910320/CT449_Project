@@ -7,16 +7,22 @@ class OrderItemService {
     extractOrderItemData(payload) {
         const orderitem = {
             _productid: payload._productid,
-            number: payload.number,
+            quantity: payload.quantity,
             size: payload.size,
-            amount: payload.amount,
-            // topping: payload.topping
+            total_amount: payload.total_amount,
+            topping: payload.topping
         };
         Object.keys(orderitem).forEach(
             (key) => orderitem[key] === undefined && delete orderitem[key]
         );
 
         return orderitem;
+    }
+
+    async findByProductId(productid) {
+        return await this.OrderItem.findOne({
+            _productid: productid ? productid.toString() : null
+        })
     }
 
     async findById(id) {
@@ -43,18 +49,13 @@ class OrderItemService {
     }
 
     async create(payload) {
-        const orderItem = this.extractOrderItemData(payload);
-        
-        const result = await this.OrderItem.findOneAndUpdate(
-            orderItem,
-            {
-                $set: {
-                    number: parseInt(payload.number),
-                    amount: (parseInt(payload.number) * payload.price),
-                },
-            },
-            { returnDocument: "after", upsert: true }
-        );
+        const orderItem = this.extractOrderItemData({
+            ...payload,
+            quantity: parseInt(payload.quantity),
+            total_amount: (parseInt(payload.quantity) * payload.price)
+        });
+
+        const result = await this.OrderItem.insertOne( orderItem );
         return result.value;
     }
 
@@ -68,8 +69,8 @@ class OrderItemService {
             {
                 $set: {
                     ...update,
-                    number: parseInt(payload.number),
-                    amount: (parseInt(payload.number) * payload.price),
+                    quantity: parseInt(payload.quantity),
+                    total_amount: (parseInt(payload.quantity) * payload.price),
                 }
             },
             { returnDocument: "after" }

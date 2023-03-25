@@ -96,11 +96,20 @@ exports.update = async (req, res, next) => {
 
 exports.delete = async (req, res, next) => {
     try {
+        const OrderItemService = require("../services/orderitem.service");
+        const orderItemService = new OrderItemService(MongoDB.client);
         const productService = new ProductService(MongoDB.client);
+
+        const findProductInOrderI = await orderItemService.findByProductId(req.params.id)
+        if(findProductInOrderI){
+            return next(new ApiError(400, "Product cannot be deleted"));
+        }
+
         const findProduct = await productService.findById(req.params.id);
         if (!findProduct) {
             return next(new ApiError(404, "Product does not exist"));
         }
+
         cloudinary.uploader.destroy(findProduct.image?.img_name);
         const document = await productService.delete(req.params.id);
         if (!document) {

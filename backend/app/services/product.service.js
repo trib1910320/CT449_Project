@@ -47,7 +47,7 @@ class ProductService {
 
     async findByTypeID(typeid) {
         const result = await this.Product.find({
-            _typeid: typeid,
+            _typeid: typeid ? typeid.toString() : null
         });
         return await result.toArray();
     }
@@ -80,7 +80,10 @@ class ProductService {
             {
                 $set: {
                     ...update,
-                    price: parseInt(payload.price)
+                    price: parseInt(payload.price),
+                    created_date: new Date().toLocaleString("vi-VN", {
+                        timeZone: "Asia/Ho_Chi_Minh",
+                    }),
                 }
             },
             { returnDocument: "after" }

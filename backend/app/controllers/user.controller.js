@@ -165,9 +165,9 @@ exports.register = async (req, res, next) => {
     }
     try {
         const userService = new UserService(MongoDB.client);
-        const foundUser = await userService.findUser(req.body);
-        if (foundUser) {
-            return next(new ApiError(400, "Username already exists in the database "));
+        const findUser = await userService.findUser(req.body);
+        if (findUser) {
+            return next(new ApiError(400, findUser));
         } else {
             const document = await userService.create(req.body);
             return res.send(document);

@@ -66,7 +66,12 @@ class TypeService {
         const update = this.extractTypeData(payload);
         const result = await this.Type.findOneAndUpdate(
             filter,
-            { $set: update },
+            { $set: {
+                ...update,
+                created_date: new Date().toLocaleString("vi-VN", {
+                    timeZone: "Asia/Ho_Chi_Minh",
+                }),
+            } },
             { returnDocument: "after" }
         );
         return result.value;

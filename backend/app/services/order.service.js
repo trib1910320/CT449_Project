@@ -7,9 +7,9 @@ class OrderService {
     extractOrderData(payload) {
         const order = {
             _userid: payload._userid,
-            delivery: payload.delivery,
+            status: payload.status,
             processor: payload.processor,
-            amount: payload.amount,
+            total_amount: payload.total_amount,
             receiver: {
                 name: payload.name,
                 phone: payload.phone,
@@ -32,21 +32,21 @@ class OrderService {
     }
 
     async find(filter) {
-        const cursor = await this.Order.find(filter).sort({"date_created": -1});
+        const cursor = await this.Order.find(filter).sort({ "date_created": -1 });
         return await cursor.toArray();
     }
 
     async findByName(name) {
-        const cursor =  await this.Order.find({
+        const cursor = await this.Order.find({
             'receiver.name': { $regex: new RegExp(name), $options: "i" },
-        }).sort({"date_created": -1});
+        }).sort({ "date_created": -1 });
         return await cursor.toArray();
     }
 
     async findByUserID(UserID) {
-        const cursor =  await this.Order.find({
-            _userid : UserID,
-        }).sort({"date_created": -1});
+        const cursor = await this.Order.find({
+            _userid: UserID ? UserID.toString() : null
+        }).sort({ "date_created": -1 });
         return await cursor.toArray();
     }
 
@@ -63,25 +63,20 @@ class OrderService {
                     as: "orderitem"
                 }
             },
-            
+
         ]);
     }
 
     async create(payload) {
-        const order = this.extractOrderData(payload);
+        const order = this.extractOrderData({
+            ...payload,
+            created_date: new Date().toLocaleString("vi-VN", {
+                timeZone: "Asia/Ho_Chi_Minh",
+            }),
+            delivery: false
+        });
 
-        const result = await this.Order.findOneAndUpdate(
-            order,
-            {
-                $set: {
-                    created_date: new Date().toLocaleString("vi-VN", {
-                        timeZone: "Asia/Ho_Chi_Minh",
-                    }),
-                    delivery: false
-                },
-            },
-            { returnDocument: "after", upsert: true }
-        );
+        const result = await this.Order.insertOne(order);
         return result.value;
     }
 
