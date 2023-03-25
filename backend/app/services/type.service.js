@@ -6,8 +6,8 @@ class TypeService {
     }
     extractTypeData(payload) {
         const type = {
-            common: payload.common,
-            name: payload.name,
+            general_name: payload.general_name,
+            specific_name: payload.specific_name,
             created_date: payload.created_date,
         };
         Object.keys(type).forEach(
@@ -22,16 +22,16 @@ class TypeService {
         return await cursor.toArray();
     }
 
-    async findByName(name) {
+    async findBySpecificName(specificName) {
         const cursor = await this.Type.find({
-            name: { $regex: new RegExp(name), $options: "i" },
+            specific_name: { $regex: new RegExp(specificName), $options: "i" },
         });
         return await cursor.toArray();
     }
 
-    async findByCommon(common) {
+    async findByGeneralName(generalName) {
         const cursor = await this.Type.find({
-            common: { $regex: new RegExp(common), $options: "i" },
+            general_name: { $regex: new RegExp(generalName), $options: "i" },
         });
         return await cursor.toArray();
     }

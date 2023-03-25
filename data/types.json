@@ -1,71 +1,82 @@
-[{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f934"
+[
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f934"
+    },
+    "general_name": "coffee",
+    "specific_name": "Coffee máy",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "coffee",
-  "name": "Coffee máy",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f935"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f935"
+    },
+    "general_name": "coffee",
+    "specific_name": "Coffee Việt Nam",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "coffee",
-  "name": "Coffee Việt Nam",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f936"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f936"
+    },
+    "general_name": "coffee",
+    "specific_name": "Cold Brew",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "coffee",
-  "name": "Cold Brew",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f937"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f937"
+    },
+    "general_name": "cloud",
+    "specific_name": "CloudFee",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "cloud",
-  "name": "CloudFee",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f938"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f938"
+    },
+    "general_name": "cloud",
+    "specific_name": "CloudTea",
+    "date_created": "16:22:01, 23/3/2023"
   },
-  "common": "cloud",
-  "name": "CloudTea",
-  "date_created": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f939"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f939"
+    },
+    "general_name": "tea",
+    "specific_name": "Trà trái cây",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "tea",
-  "name": "Trà trái cây",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f93a"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f93a"
+    },
+    "general_name": "tea",
+    "specific_name": "Trà sữa Macchiato",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "tea",
-  "name": "Trà sữa Macchiato",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f93b"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f93b"
+    },
+    "general_name": "tea",
+    "specific_name": "Hi-Tea Healthy",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "tea",
-  "name": "Hi-Tea Healthy",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f93c"
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f93c"
+    },
+    "general_name": "cake",
+    "specific_name": "Bánh mặn",
+    "created_date": "16:22:01, 23/3/2023"
   },
-  "common": "cake",
-  "name": "Bánh mặn",
-  "created_date": "16:22:01, 23/3/2023"
-},{
-  "_id": {
-    "$oid": "641c1a8a8d07f521f438f93d"
-  },
-  "common": "cake",
-  "name": "Bánh ngọt",
-  "created_date": "16:22:01, 23/3/2023"
-}]
+  {
+    "_id": {
+      "$oid": "641c1a8a8d07f521f438f93d"
+    },
+    "general_name": "cake",
+    "specific_name": "Bánh ngọt",
+    "created_date": "16:22:01, 23/3/2023"
+  }
+]

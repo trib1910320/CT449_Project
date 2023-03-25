@@ -12,7 +12,7 @@ class ProductService {
                 img_name: payload.filename
             },
             describe: payload.describe,
-            price: payload.price,
+            price: (payload.price) ? parseInt(payload.price) : payload.price,
             created_date: payload.created_date,
             _typeid: payload._typeid
         };
@@ -61,8 +61,7 @@ class ProductService {
                 $set: {
                     created_date: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
-                    }),
-                    price: parseInt(payload.price)
+                    })
                 }
             },
             { returnDocument: "after", upsert: true }
@@ -80,7 +79,6 @@ class ProductService {
             {
                 $set: {
                     ...update,
-                    price: parseInt(payload.price),
                     created_date: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
                     }),

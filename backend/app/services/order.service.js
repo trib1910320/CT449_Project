@@ -51,20 +51,9 @@ class OrderService {
     }
 
     async findById(id) {
-        return await this.Order.aggregate([
-            { $match: { "_id": ObjectId.isValid(id) ? new ObjectId(id) : null } },
-            { $unwind: "$order_items" },
-            { $addFields: { "order_item": { $toObjectId: "$order_items" } } },
-            {
-                $lookup: {
-                    from: "orderitems",
-                    localField: "order_item",
-                    foreignField: "_id",
-                    as: "orderitem"
-                }
-            },
-
-        ]);
+        return await this.Order.findOne({
+            _id: ObjectId.isValid(id) ? new ObjectId(id) : null
+        })
     }
 
     async create(payload) {

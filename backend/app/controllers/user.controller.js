@@ -104,7 +104,7 @@ exports.favorite = async (req, res, next) => {
 
         const findIsFavorite = await userService.findIsFavorite(req.user.id, req.body.productid);
         if (findIsFavorite) {
-            return next(new ApiError(400, "Product already exists in favorites list"));
+            return next(new ApiError(404, "Product already exists in favorites list"));
         }
 
         const document = await userService.favorite(req.user.id, req.body.productid);
@@ -126,7 +126,7 @@ exports.unfavorite = async (req, res, next) => {
 
         const findIsFavorite = await userService.findIsFavorite(req.user.id, req.body.productid);
         if (!findIsFavorite) {
-            return next(new ApiError(400, "Product does not exist in favorites list"));
+            return next(new ApiError(404, "Product does not exist in favorites list"));
         }
 
         const document = await userService.unfavorite(req.user.id, req.body.productid);
@@ -167,7 +167,7 @@ exports.register = async (req, res, next) => {
         const userService = new UserService(MongoDB.client);
         const findUser = await userService.findUser(req.body);
         if (findUser) {
-            return next(new ApiError(400, findUser));
+            return next(new ApiError(404, findUser));
         } else {
             const document = await userService.create(req.body);
             return res.send(document);
@@ -182,12 +182,12 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
         const userService = new UserService(MongoDB.client);
-        const user = await userService.findUser(req.body);
+        const user = await userService.findByUsername(req.body.username);
 
-        if (!user) return next(new ApiError(400, "Wrong username"));
+        if (!user) return next(new ApiError(404, "Wrong username"));
 
         const validPassword = await userService.validPassword(req.body.password, user.password)
-        if (!validPassword) return next(new ApiError(400, "Wrong password"));
+        if (!validPassword) return next(new ApiError(404, "Wrong password"));
         if (user && validPassword) {
             const accessToken = await userService.login(user, "2h");
             const refreshToken = await userService.login(user, "1d");
@@ -203,6 +203,7 @@ exports.login = async (req, res, next) => {
             });
         }
     } catch (error) {
+        console.log(error);
         return next(
             new ApiError(500, "An error occurred while logging the user")
         );
@@ -212,12 +213,12 @@ exports.login = async (req, res, next) => {
 exports.refreshToken = async (req, res, next) => {
     const refreshToken = req.cookies.refreshToken;
     if (!refreshToken) return next(
-        new ApiError(400, "You're not authenticated")
+        new ApiError(401, "You're not authenticated")
     );
     const userService = new UserService(MongoDB.client);
     jwt.verify(refreshToken, config.JWT_Secret, async (error, user) => {
         if (error) return next(
-            new ApiError(400, "Token is not valid")
+            new ApiError(401, "Token is not valid")
         );
         const newAccessToken = await userService.refresh(user, "2h");
         const newRefreshToken = await userService.refresh(user, "1d");

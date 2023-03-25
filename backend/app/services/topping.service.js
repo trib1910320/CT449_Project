@@ -7,7 +7,7 @@ class ToppingService {
     extractToppingData(payload) {
         const topping = {
             name: payload.name,
-            price: payload.price,
+            price: (payload.price) ? parseInt(payload.price) : payload.price,
             created_date: payload.created_date,
         };
         Object.keys(topping).forEach(

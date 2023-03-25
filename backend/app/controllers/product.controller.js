@@ -59,7 +59,6 @@ exports.create = async (req, res, next) => {
 };
 
 exports.update = async (req, res, next) => {
-    console.log(req.body);
     if (Object.keys(req.body).length === 0 && !(req.file)) {
         return next(new ApiError(400, "Data to update can not be empty"));
     }
@@ -70,7 +69,7 @@ exports.update = async (req, res, next) => {
         if (!findProduct) {
             return next(new ApiError(404, "Product does not exist"));
         }
-
+        
         const fileData = req.file;
         if (fileData) {
             cloudinary.uploader.destroy(findProduct.image.img_name);

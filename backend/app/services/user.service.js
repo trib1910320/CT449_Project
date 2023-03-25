@@ -16,7 +16,6 @@ class UserService {
             gender: payload.gender,
             email: payload.email,
             phone: payload.phone,
-            address: payload.address,
             avatar: {
                 avatar_data: payload.path,
                 avatar_name: payload.filename
@@ -45,6 +44,12 @@ class UserService {
     async findByName(name) {
         return await this.User.find({
             name: { $regex: new RegExp(name), $options: "i" },
+        });
+    }
+
+    async findByUsername(username) {
+        return await this.User.findOne({
+            username: { $regex: new RegExp(username), $options: "i" },
         });
     }
 
