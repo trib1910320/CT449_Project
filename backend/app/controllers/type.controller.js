@@ -39,8 +39,8 @@ exports.findOne = async (req, res, next) => {
 };
 
 exports.create = async (req, res, next) => {
-    if (!req.body?.name) {
-        return next(new ApiError(400, "Name can not be empty"));
+    if (!req.body?.specific_name) {
+        return next(new ApiError(400, "Specific name can not be empty"));
     }
     try {
         const typeService = new TypeService(MongoDB.client);

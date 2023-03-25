@@ -40,11 +40,12 @@ exports.findOne = async (req, res, next) => {
 };
 
 exports.create = async (req, res, next) => {
+    if (!req.body?.name) {
+        return next(new ApiError(400, "Name can not be empty"));
+    }
     try {
         const fileData = req.file;
-        if (!req.body?.name && !fileData) {
-            return next(new ApiError(400, "Name can not be empty"));
-        }
+        
         const productService = new ProductService(MongoDB.client);
         const document = await productService.create({
             ...req.body, path: fileData?.path, filename: fileData?.filename
@@ -101,7 +102,7 @@ exports.delete = async (req, res, next) => {
 
         const findProductInOrderI = await orderItemService.findByProductId(req.params.id)
         if(findProductInOrderI){
-            return next(new ApiError(400, "Product cannot be deleted"));
+            return next(new ApiError(405, "Product cannot be deleted"));
         }
 
         const findProduct = await productService.findById(req.params.id);
