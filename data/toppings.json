@@ -1,0 +1,71 @@
+[{
+  "_id": {
+    "$oid": "641e809be0d96760f3698808"
+  },
+  "name": "Shot Espresso",
+  "price": 10000,
+  "created_date": "12:03:23, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e809ee0d96760f369880a"
+  },
+  "name": "Kem Phô Mai Macchiato",
+  "price": 10000,
+  "created_date": "12:03:26, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80b2e0d96760f369884d"
+  },
+  "name": "Trân châu trắng",
+  "price": 10000,
+  "created_date": "12:03:46, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80bae0d96760f3698855"
+  },
+  "name": "Sốt Caramel",
+  "price": 10000,
+  "created_date": "12:03:54, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80c1e0d96760f369885d"
+  },
+  "name": "Thạch Cà Phê",
+  "price": 10000,
+  "created_date": "12:04:01, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80d3e0d96760f3698866"
+  },
+  "name": "Hạt Sen",
+  "price": 10000,
+  "created_date": "12:04:19, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80dde0d96760f369886d"
+  },
+  "name": "Trái Vải",
+  "price": 10000,
+  "created_date": "12:04:29, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80e5e0d96760f3698875"
+  },
+  "name": "Đào Miếng",
+  "price": 10000,
+  "created_date": "12:04:37, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80efe0d96760f369887d"
+  },
+  "name": "Trái Nhãn",
+  "price": 10000,
+  "created_date": "12:04:47, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641e80f6e0d96760f3698885"
+  },
+  "name": "Nhan Đam",
+  "price": 10000,
+  "created_date": "12:04:54, 25/3/2023"
+}]

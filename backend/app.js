@@ -8,6 +8,7 @@ const usersRouter = require("./app/routes/user.route");
 const authRouter = require("./app/routes/auth.route");
 const productsRouter = require("./app/routes/product.route");
 const typesRouter = require("./app/routes/type.route");
+const toppingsRouter = require("./app/routes/topping.route");
 const ordersRouter = require("./app/routes/order.route");
 const orderitemsRouter = require("./app/routes/orderitem.route");
 
@@ -26,6 +27,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/orderitems",orderitemsRouter);
 app.use("/api/products",productsRouter);
 app.use("/api/types",typesRouter);
+app.use("/api/toppings",toppingsRouter);
 app.use("/api/users",auth.verifyToken ,usersRouter);
 app.use("/api/orders",auth.verifyToken ,ordersRouter);
 
