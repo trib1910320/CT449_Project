@@ -13,7 +13,7 @@ class ProductService {
             },
             describe: payload.describe,
             price: (payload.price) ? parseInt(payload.price) : payload.price,
-            created_date: payload.created_date,
+            date_created: payload.date_created,
             _typeid: payload._typeid
         };
         Object.keys(product).forEach(
@@ -29,27 +29,33 @@ class ProductService {
     }
 
     async find(filter) {
-        const cursor = await this.Product.find(filter);
+        const cursor = await this.Product.find(filter).sort({ "date_created": -1 });
+        return await cursor.toArray();
+    }
+
+    async findLimit(filter) {
+        const cursor = await this.Product.find(filter).sort({ "date_created": -1 }).limit(5);
         return await cursor.toArray();
     }
 
     async findByName(name) {
-        return await this.Product.find({
-            name: { $regex: new RegExp(name), $options: "i" },
+        const cursor = await this.Product.find({
+            name: { $regex: new RegExp(name)},
         });
+        return await cursor.toArray();
+    }
+
+    async findByTypeId(typeid) {
+        const cursor = this.Product.find({
+            _typeid: typeid ? typeid.toString() : null
+        });
+        return await cursor.toArray();
     }
 
     async findById(id) {
         return await this.Product.findOne({
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null
         })
-    }
-
-    async findByTypeID(typeid) {
-        const result = await this.Product.find({
-            _typeid: typeid ? typeid.toString() : null
-        });
-        return await result.toArray();
     }
 
     async create(payload) {
@@ -59,7 +65,7 @@ class ProductService {
             product,
             {
                 $set: {
-                    created_date: new Date().toLocaleString("vi-VN", {
+                    date_created: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
                     })
                 }
@@ -79,7 +85,7 @@ class ProductService {
             {
                 $set: {
                     ...update,
-                    created_date: new Date().toLocaleString("vi-VN", {
+                    date_created: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
                     }),
                 }

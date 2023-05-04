@@ -8,7 +8,7 @@ class OrderService {
         const order = {
             _userid: payload._userid,
             status: payload.status,
-            processor: payload.processor,
+            payment: payload.payment,
             total_amount: payload.total_amount,
             receiver: {
                 name: payload.name,
@@ -17,7 +17,7 @@ class OrderService {
             },
             note: payload.note,
             order_items: payload.order_items,
-            created_date: payload.created_date,
+            date_created: payload.date_created,
         };
         Object.keys(order).forEach(
             (key) => order[key] === undefined && delete order[key]
@@ -59,13 +59,20 @@ class OrderService {
     async create(payload) {
         const order = this.extractOrderData({
             ...payload,
-            created_date: new Date().toLocaleString("vi-VN", {
+            date_created: new Date().toLocaleString("vi-VN", {
                 timeZone: "Asia/Ho_Chi_Minh",
-            }),
-            delivery: false
+            })
         });
 
-        const result = await this.Order.insertOne(order);
+        const result = await this.Order.findOneAndUpdate(
+            order,
+            {
+                $set: {
+                    status: 0
+                }
+            },
+            { returnDocument: "after", upsert: true }
+        );
         return result.value;
     }
 

@@ -10,18 +10,21 @@ class UserService {
     // Định nghĩa các phương thức truy xuất CSDL sử dụng mongodb API
     extractUserData(payload) {
         const user = {
-            username: payload.username,
-            password: payload.password,
-            name: payload.name,
-            gender: payload.gender,
-            email: payload.email,
             phone: payload.phone,
+            password: payload.password,
+            name: {
+                fullname: payload.lastname + ' ' + payload.firstname,
+                lastname: payload.lastname,
+                firstname: payload.firstname
+            },
+            gender: payload.gender,
+            address: payload.address,
+            date_birth: payload.date_birth,
             avatar: {
                 avatar_data: payload.path,
                 avatar_name: payload.filename
             },
-            favorites_list: payload.favorites_list,
-            admin: payload.admin,
+            admin: payload.admin
         };
 
         Object.keys(user).forEach(
@@ -42,14 +45,15 @@ class UserService {
     }
 
     async findByName(name) {
-        return await this.User.find({
-            name: { $regex: new RegExp(name), $options: "i" },
+        const result = await this.User.find({
+            'name.fullname': { $regex: new RegExp(name), $options: "i" },
         });
+        return await result.toArray();
     }
 
-    async findByUsername(username) {
+    async findUserByPhone(phone) {
         return await this.User.findOne({
-            username: { $regex: new RegExp(username), $options: "i" },
+            phone: { $regex: new RegExp(phone), $options: "i" },
         });
     }
 
@@ -57,22 +61,6 @@ class UserService {
         return await this.User.findOne({
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null
         })
-    }
-
-    async findFavoriteProducts(productId) {
-        let result = await this.User.aggregate([
-            { $unwind: "$favorites_list" },
-            { $match: { favorites_list: productId } }
-        ]);
-        return result = await result.toArray();
-    }
-
-    async findIsFavorite(id, productid) {
-        const res = await this.User.findOne({
-            _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
-            favorites_list: productid ? productid.toString() : null
-        });
-        return res;
     }
 
     async update(id, payload) {
@@ -110,7 +98,6 @@ class UserService {
                 $set: {
                     admin: false,
                     password: passwordHashed,
-                    online: false,
                     avatar: {
                         avatar_data: defaultAvatar[Math.floor(Math.random() * 3)],
                     }
@@ -132,44 +119,8 @@ class UserService {
         );
     }
 
-    async favorite(UserID, ProductId) {
-        const filter = {
-            _id: ObjectId.isValid(UserID) ? new ObjectId(UserID) : null,
-        };
-        const update = { favorites_list: ProductId };
-        const result = await this.User.findOneAndUpdate(
-            filter,
-            { $push: update },
-            { returnDocument: "after" }
-        );
-        return result.value;
-    }
-
-    async unfavorite(UserID, ProductId) {
-        const filter = {
-            _id: ObjectId.isValid(UserID) ? new ObjectId(UserID) : null,
-        };
-        const update = { favorites_list: ProductId };
-        const result = await this.User.findOneAndUpdate(
-            filter,
-            { $pull: update },
-            { returnDocument: "after" }
-        );
-        return result.value;
-    }
-
     // Auth
     async login(payload, time) {
-        const filter = {
-            _id: ObjectId.isValid(payload._id) ? new ObjectId(payload._id) : null,
-        };
-        const update = { online: true };
-        await this.User.findOneAndUpdate(
-            filter,
-            { $set: update },
-            { returnDocument: "after" }
-        );
-
         return jwt.sign({
             iss: 'Le Duong Tri',
             id: payload._id,
@@ -178,6 +129,7 @@ class UserService {
             expiresIn: time    // Ngày hết hạn Token 
         })
     }
+
     async refresh(payload, time) {
         return jwt.sign({
             iss: 'Le Duong Tri',
@@ -193,19 +145,6 @@ class UserService {
             validpassword,
             password
         );
-    }
-
-    async findUser(payload) {
-        if (await this.User.findOne({ username: payload.username })) {
-            return "Username already exists in the database"
-        }
-        if (await this.User.findOne({ email: payload.email })) {
-            return "Email already exists in the database"
-        }
-        if (await this.User.findOne({ phone: payload.phone })) {
-            return "Numberphone already exists in the database"
-        }
-        return null;
     }
 
 }

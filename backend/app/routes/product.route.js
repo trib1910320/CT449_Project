@@ -8,6 +8,8 @@ const router = express.Router();
 router.route("/")
     .get(products.findAll)
     .post(auth.verifyToken ,auth.verifyAdmin, uploadCloud.single('image'), products.create)
+router.route("/new")
+    .get(products.findNewLimit)
 router.route("/:id")
     .get(products.findOne)
     .put(auth.verifyToken ,auth.verifyAdmin, uploadCloud.single('image'), products.update)

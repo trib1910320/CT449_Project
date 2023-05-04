@@ -7,11 +7,6 @@ const router = express.Router();
 
 router.route("/")
     .get(auth.verifyAdmin, users.findAll)
-router.route("/favorite")
-    .get(users.favoriteProducts)
-    .put(users.favorite)
-router.route("/unfavorite")
-    .put(users.unfavorite)
 router.route("/logout")
     .get(users.logOut)
 router.route("/:id")

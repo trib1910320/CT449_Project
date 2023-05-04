@@ -10,7 +10,8 @@ class OrderItemService {
             quantity: payload.quantity,
             size: payload.size,
             total_amount: payload.total_amount,
-            topping: payload.topping
+            topping: payload.topping,
+            date_created: payload.date_created
         };
         Object.keys(orderitem).forEach(
             (key) => orderitem[key] === undefined && delete orderitem[key]
@@ -20,9 +21,15 @@ class OrderItemService {
     }
 
     async findByProductId(productid) {
-        return await this.OrderItem.findOne({
+        const cursor = await this.OrderItem.find({
             _productid: productid ? productid.toString() : null
-        })
+        });
+        return await cursor.toArray();
+    }
+
+    async findAll(filter) {
+        const cursor = await this.OrderItem.find(filter);
+        return await cursor.toArray();
     }
 
     async findById(id) {
@@ -43,19 +50,24 @@ class OrderItemService {
         return await cursor.toArray();
     }
 
-    async findAll(filter) {
-        const cursor = await this.OrderItem.find(filter);
-        return await cursor.toArray();
-    }
-
     async create(payload) {
         const orderItem = this.extractOrderItemData({
             ...payload,
-            quantity: parseInt(payload.quantity),
-            total_amount: (parseInt(payload.quantity) * payload.price)
+            date_created: new Date().toLocaleString("vi-VN", {
+                timeZone: "Asia/Ho_Chi_Minh",
+            })
         });
-
-        const result = await this.OrderItem.insertOne( orderItem );
+        
+        const result = await this.OrderItem.findOneAndUpdate(
+            orderItem,
+            {
+                $set: {
+                    quantity: parseInt(payload.quantity),
+                    total_amount: (parseInt(payload.quantity) * payload.price)
+                }
+            },
+            { returnDocument: "after", upsert: true }
+        );
         return result.value;
     }
 

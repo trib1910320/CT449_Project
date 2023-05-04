@@ -59,20 +59,3 @@ exports.verifyAdminOrder = async (req, res, next) => {
         );
     }
 }
-
-// exports.verifyAdminOrderItems = async (req, res, next) => {
-//     const orderitemService = new OrderItemService(MongoDB.client);
-//     const orderService = new OrderService(MongoDB.client);
-//     const orderitem = await orderitemService.findById(req.params.id);
-//     const order = await orderService.findById(req.params.id);
-//     if (
-//         (req.user.id == order._uid && orderitem._orderid == (order._id).toString())
-//         || req.user.admin
-//     ) {
-//         next();
-//     } else {
-//         return next(
-//             new ApiError(400, "You are not allowed to make other changes")
-//         );
-//     }
-// }

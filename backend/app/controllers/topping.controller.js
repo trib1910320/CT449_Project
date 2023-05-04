@@ -54,16 +54,19 @@ exports.create = async (req, res, next) => {
 };
 
 exports.update = async (req, res, next) => {
-    if (Object.keys(req.body).length === 0 ) {
+    if (Object.keys(req.body).length === 0) {
         return next(new ApiError(400, "Data to update can not be empty"));
     }
     try {
         const toppingService = new ToppingService(MongoDB.client);
+        const findTopping = await toppingService.findByName(req.body.name);
+        if (findTopping.length != 0)
+            return next(new ApiError(400, "Topping Name already exists."));
 
         const document = await toppingService.update(req.params.id, req.body);
-            if (!document) {
-                return new (ApiError(404, "Topping not found"))
-            }
+        if (!document) {
+            return new (ApiError(404, "Topping not found"))
+        }
         return res.send({ message: "Topping was update successfully" });
     } catch (error) {
         return next(
@@ -74,7 +77,12 @@ exports.update = async (req, res, next) => {
 
 exports.delete = async (req, res, next) => {
     try {
+        const OrderItemService = require("../services/orderitem.service");
+        const orderItemService = new OrderItemService(MongoDB.client);
         const toppingService = new ToppingService(MongoDB.client);
+
+        const findOrderItem = await orderItemService.find({});
+
 
         const document = await toppingService.delete(req.params.id);
         if (!document) {

@@ -39,8 +39,8 @@ exports.findOne = async (req, res, next) => {
 };
 
 exports.create = async (req, res, next) => {
-    if (!req.body?.processor) {
-        return next(new ApiError(400, "Processor can not be empty"));
+    if (!req.body?.payment) {
+        return next(new ApiError(400, "Payment method can not be empty"));
     }
     try {
         const OrderItemService = require("../services/orderitem.service");

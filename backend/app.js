@@ -24,10 +24,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
-app.use("/api/orderitems",orderitemsRouter);
 app.use("/api/products",productsRouter);
 app.use("/api/types",typesRouter);
 app.use("/api/toppings",toppingsRouter);
+app.use("/api/orderitems", orderitemsRouter);
 app.use("/api/users",auth.verifyToken ,usersRouter);
 app.use("/api/orders",auth.verifyToken ,ordersRouter);
 

@@ -43,13 +43,12 @@ exports.create = async (req, res, next) => {
         const toppingService = new ToppingService(MongoDB.client);
         const orderItemService = new OrderItemService(MongoDB.client);
 
-
         const product = await productService.findById(req.body._productid);
         let priceSize = 0;
-        if (req.body.size == "medium") {
+        if (req.body.size == "Medium") {
+            priceSize = 4000
+        } else if (req.body.size == "Big") {
             priceSize = 10000
-        } else if (req.body.size == "big") {
-            priceSize = 16000
         }
 
         let priceTopping = 0;
@@ -80,13 +79,12 @@ exports.update = async (req, res, next) => {
         const ToppingService = require("../services/topping.service");
         const toppingService = new ToppingService(MongoDB.client);
         const orderItemService = new OrderItemService(MongoDB.client);
-
         const orderItem = await orderItemService.findById(req.params.id);
-        let priceSize = 0;
-        if (req.body.size == "medium") {
-            priceSize = 10000
-        } else if (req.body.size == "big") {
-            priceSize = 16000
+        let sizePrice = 0;
+        if (req.body.size == "Medium") {
+            sizePrice = 4000;
+        } else if (req.body.size == "Big") {
+            sizePrice = 10000;
         }
 
         let priceTopping = 0;
@@ -101,9 +99,8 @@ exports.update = async (req, res, next) => {
                 priceTopping += topping.price;
             }
         }
-
         const document = await orderItemService.update(req.params.id,
-            { ...req.body, price: (orderItem[0].product.price + priceSize + priceTopping) }
+            { ...req.body, price: (orderItem[0].product.price + sizePrice + priceTopping) }
         );
         if (!document) {
             return new ApiError(404, "OrderItem not found")

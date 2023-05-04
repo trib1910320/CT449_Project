@@ -8,8 +8,10 @@ exports.findAll = async (req, res, next) => {
     let documents = [];
     try {
         const userService = new UserService(MongoDB.client);
-        const { name } = req.query;
-        if (name) {
+        const { name, phone } = req.query;
+        if (phone) {
+            documents = await userService.findUserByPhone(phone);
+        } else if (name) {
             documents = await userService.findByName(name);
         } else {
             documents = await userService.find({});
@@ -52,12 +54,12 @@ exports.update = async (req, res, next) => {
                 ...req.body, path: fileData.path, filename: fileData.filename
             });
             if (!document) {
-                return new (ApiError(404, "User not found"))
+                return next(new ApiError(404, "User not found"))
             }
         } else {
             const document = await userService.update(req.params.id, req.body);
             if (!document) {
-                return new (ApiError(404, "User not found"))
+                return next(new ApiError(404, "User not found"))
             }
         }
         return res.send({ message: "User was update successfully" });
@@ -83,66 +85,6 @@ exports.delete = async (req, res, next) => {
     }
 };
 
-exports.favoriteProducts = async (req, res, next) => {
-    try {
-        const userService = new UserService(MongoDB.client);
-        const document = await userService.findById(req.user.id);
-        if (!document) {
-            return next(new ApiError(404, "Favorite products not found"));
-        }
-        return res.send(document.favorites_list);
-    } catch (error) {
-        return next(
-            new ApiError(500, 'An error occurred while retrieving the favorite products')
-        );
-    }
-};
-
-exports.favorite = async (req, res, next) => {
-    try {
-        const userService = new UserService(MongoDB.client);
-
-        const findIsFavorite = await userService.findIsFavorite(req.user.id, req.body.productid);
-        if (findIsFavorite) {
-            return next(new ApiError(404, "Product already exists in favorites list"));
-        }
-
-        const document = await userService.favorite(req.user.id, req.body.productid);
-        if (!document) {
-            return next(new ApiError(404, "Favorite products not found"))
-        }
-
-        return res.send({ message: "Product was favorite successfully" });
-    } catch (error) {
-        return next(
-            new ApiError(500, `Error favorite product with id=${req.body.productid}`)
-        );
-    }
-};
-
-exports.unfavorite = async (req, res, next) => {
-    try {
-        const userService = new UserService(MongoDB.client);
-
-        const findIsFavorite = await userService.findIsFavorite(req.user.id, req.body.productid);
-        if (!findIsFavorite) {
-            return next(new ApiError(404, "Product does not exist in favorites list"));
-        }
-
-        const document = await userService.unfavorite(req.user.id, req.body.productid);
-        if (!document) {
-            return next(new ApiError(404, "Favorite products not found"))
-        }
-
-        return res.send({ message: "Product was unfavorite successfully" });
-    } catch (error) {
-        console.log(error);
-        return next(
-            new ApiError(500, `Error unfavorite product with id=${req.body.productid}`)
-        );
-    }
-};
-
 exports.logOut = async (req, res, next) => {
     try {
         const userService = new UserService(MongoDB.client);
@@ -158,21 +100,21 @@ exports.logOut = async (req, res, next) => {
 };
 // Auth Route
 exports.register = async (req, res, next) => {
-    if (!req.body?.username) {
-        return next(new ApiError(400, "Username can not be empty"));
+    if (!req.body?.phone) {
+        return next(new ApiError(400, "Numberphone can not be empty"));
     } else if (!req.body?.password) {
         return next(new ApiError(400, "Password can not be empty"));
     }
     try {
         const userService = new UserService(MongoDB.client);
-        const findUser = await userService.findUser(req.body);
+        const findUser = await userService.findUserByPhone(req.body.phone);
         if (findUser) {
-            return next(new ApiError(404, findUser));
-        } else {
-            const document = await userService.create(req.body);
-            return res.send(document);
+            return next(new ApiError(400, "User already exists"));
         }
+        const document = await userService.create(req.body);
+        return res.send(document);
     } catch (error) {
+        console.log(error);
         return next(
             new ApiError(500, "An error occurred while creating the user")
         );
@@ -182,9 +124,9 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
         const userService = new UserService(MongoDB.client);
-        const user = await userService.findByUsername(req.body.username);
+        const user = await userService.findUserByPhone(req.body.phone);
 
-        if (!user) return next(new ApiError(404, "Wrong username"));
+        if (!user) return next(new ApiError(404, "Wrong numberphone"));
 
         const validPassword = await userService.validPassword(req.body.password, user.password)
         if (!validPassword) return next(new ApiError(404, "Wrong password"));
@@ -199,11 +141,11 @@ exports.login = async (req, res, next) => {
             });
             return res.send({
                 userid: user._id,
+                admin: user.admin,
                 AccessToken: accessToken
             });
         }
     } catch (error) {
-        console.log(error);
         return next(
             new ApiError(500, "An error occurred while logging the user")
         );
@@ -231,6 +173,7 @@ exports.refreshToken = async (req, res, next) => {
 
         return res.send({
             userid: user.id,
+            admin: user.admin,
             AccessToken: newAccessToken
         });
     })

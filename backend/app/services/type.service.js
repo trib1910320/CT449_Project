@@ -6,13 +6,21 @@ class TypeService {
     }
     extractTypeData(payload) {
         const type = {
-            general_name: payload.general_name,
-            specific_name: payload.specific_name,
-            created_date: payload.created_date,
+            name: payload.name,
+            image: {
+                img_data: payload.path,
+                img_name: payload.filename
+            },
+            date_created: payload.date_created,
         };
         Object.keys(type).forEach(
             (key) => type[key] === undefined && delete type[key]
         );
+
+        Object.keys(product.image).forEach(
+            (key) => product.image[key] === undefined && delete product.image[key]
+        );
+        if (Object.keys(product.image).length == 0) { delete product.image };
 
         return type;
     }
@@ -22,16 +30,9 @@ class TypeService {
         return await cursor.toArray();
     }
 
-    async findBySpecificName(specificName) {
+    async findByName(name) {
         const cursor = await this.Type.find({
-            specific_name: { $regex: new RegExp(specificName), $options: "i" },
-        });
-        return await cursor.toArray();
-    }
-
-    async findByGeneralName(generalName) {
-        const cursor = await this.Type.find({
-            general_name: { $regex: new RegExp(generalName), $options: "i" },
+            name: { $regex: new RegExp(name)},
         });
         return await cursor.toArray();
     }
@@ -49,7 +50,7 @@ class TypeService {
             type,
             {
                 $set: {
-                    created_date: new Date().toLocaleString("vi-VN", {
+                    date_created: new Date().toLocaleString("vi-VN", {
                         timeZone: "Asia/Ho_Chi_Minh",
                     }),
                 }
@@ -68,7 +69,7 @@ class TypeService {
             filter,
             { $set: {
                 ...update,
-                created_date: new Date().toLocaleString("vi-VN", {
+                date_created: new Date().toLocaleString("vi-VN", {
                     timeZone: "Asia/Ho_Chi_Minh",
                 }),
             } },
