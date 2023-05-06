@@ -8,35 +8,35 @@
                 ($route.name == 'manage.users') ? { active: true } : '']" :to="{
         name: 'manage.users'
     }">
-                <i class="fa-solid fa-bag-shopping"></i> Users
+                <i class="fa-solid fa-user"></i> Users
             </router-link>
 
             <router-link class="list-group-item btn btn-outline-warning" :class="[
                 ($route.name == 'manage.orders') ? { active: true } : '']" :to="{
         name: 'manage.orders'
     }">
-                <i class="fa-solid fa-id-card-clip"></i> Orders
+                <i class="fa-solid fa-bag-shopping"></i> Orders
             </router-link>
 
             <router-link class="list-group-item btn btn-outline-warning" :class="[
                     ($route.name == 'manage.products') ? { active: true } : '']" :to="{
                 name: 'manage.products'
             }">
-                <i class="fa-solid fa-id-card-clip"></i> Products
+                <i class="fa-solid fa-mug-hot"></i> Products
             </router-link>
 
             <router-link class="list-group-item btn btn-outline-warning" :class="[
                     ($route.name == 'manage.types') ? { active: true } : '']" :to="{
                 name: 'manage.types'
             }">
-                <i class="fa-solid fa-id-card-clip"></i> Types
+                <i class="fa-solid fa-font"></i> Types
             </router-link>
 
             <router-link class="list-group-item btn btn-outline-warning" :class="[
                     ($route.name == 'manage.toppings') ? { active: true } : '']" :to="{
                 name: 'manage.toppings'
             }">
-                <i class="fa-solid fa-id-card-clip"></i> Toppings
+                <i class="fa-solid fa-glass-citrus"></i> Toppings
             </router-link>
         </div>
     </div>
