@@ -36,7 +36,7 @@
                     ($route.name == 'manage.toppings') ? { active: true } : '']" :to="{
                 name: 'manage.toppings'
             }">
-                <i class="fa-solid fa-glass-citrus"></i> Toppings
+                <i class="fa-solid fa-glass-water"></i> Toppings
             </router-link>
         </div>
     </div>
