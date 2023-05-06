@@ -92,7 +92,7 @@ export default {
                 .string()
                 .required("Please enter the Product's name.")
                 .min(2, "Must have at least 2 characters.")
-                .max(30, "Product's name has at most 30 characters."),
+                .max(50, "Product's name has at most 50 characters."),
             describe: yup
                 .string()
                 .min(2, "Must have at least 2 characters.")
