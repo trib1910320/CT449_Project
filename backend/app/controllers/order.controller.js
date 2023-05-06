@@ -7,11 +7,8 @@ exports.findAll = async (req, res, next) => {
     try {
         const orderService = new OrderService(MongoDB.client);
         const { name } = req.query;
-        const { userid } = req.query;
         if (name) {
             documents = await orderService.findByName(name)
-        } else if (userid) {
-            documents = await orderService.findByUserID(userid)
         } else {
             documents = await orderService.find({});
         }
@@ -38,6 +35,21 @@ exports.findOne = async (req, res, next) => {
     }
 };
 
+exports.findByUser = async (req, res, next) => {
+    try {
+        const orderService = new OrderService(MongoDB.client);
+        const documents = await orderService.findByUserID(req.user.id);
+        if (!documents) {
+            return next(new ApiError(404, "Order not found"));
+        }
+        return res.send(documents);
+    } catch (error) {
+        return next(
+            new ApiError(500, `Error retrieving order with userid=${req.user.id}`)
+        );
+    }
+};
+
 exports.create = async (req, res, next) => {
     if (!req.body?.payment) {
         return next(new ApiError(400, "Payment method can not be empty"));
@@ -47,13 +59,13 @@ exports.create = async (req, res, next) => {
         const orderItemService = new OrderItemService(MongoDB.client);
         const orderService = new OrderService(MongoDB.client);
 
-        let total_amount=0;
+        let total_amount = 0;
         for (const id of req.body.order_items) {
             const orderitem = await orderItemService.findById(id);
             total_amount += orderitem[0].total_amount;
         }
 
-        const document = await orderService.create({...req.body, total_amount: total_amount});
+        const document = await orderService.create({ ...req.body, _userid: req.user.id, total_amount: total_amount });
         return res.send(document);
     } catch (error) {
         return next(
@@ -63,24 +75,13 @@ exports.create = async (req, res, next) => {
 };
 
 exports.update = async (req, res, next) => {
-    if (Object.keys(req.body).length === 0 ) {
-        return next(new ApiError(400, "Data to update can not be empty"));
-    }
     try {
-        const OrderItemService = require("../services/orderitem.service");
-        const orderItemService = new OrderItemService(MongoDB.client);
         const orderService = new OrderService(MongoDB.client);
-
-        let total_amount=0;
-        for (const id of req.body.order_items) {
-            const orderitem = await orderItemService.findById(id);
-            total_amount += orderitem[0].total_amount;
+        
+        const document = await orderService.update(req.params.id, req.body);
+        if (!document) {
+            return new (ApiError(404, "Order not found"))
         }
-
-        const document = await orderService.update(req.params.id, {...req.body, total_amount: total_amount});
-            if (!document) {
-                return new (ApiError(404, "Order not found"))
-            }
         return res.send({ message: "Order was update successfully" });
     } catch (error) {
         return next(

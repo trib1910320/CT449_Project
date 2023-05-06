@@ -7,12 +7,9 @@ exports.findAll = async (req, res, next) => {
     let documents = [];
     try {
         const productService = new ProductService(MongoDB.client);
-        const { name } = req.query;
         const { typeid } = req.query;
         if (typeid) {
             documents = await productService.findByTypeId(typeid);
-        } else if (name) {
-            documents = await productService.findByName(name);
         } else {
             documents = await productService.find({});
         }
@@ -79,10 +76,6 @@ exports.update = async (req, res, next) => {
     try {
         const productService = new ProductService(MongoDB.client);
 
-        const findProductName = await productService.findByName(req.body.name);
-        if (findProductName.length != 0)
-            return next(new ApiError(404, "Product Name already exists."));
-
         const findProduct = await productService.findById(req.params.id);
         if (!findProduct)
             return next(new ApiError(404, "Product does not exist"));
@@ -103,6 +96,7 @@ exports.update = async (req, res, next) => {
         }
         return res.send({ message: "Product was update successfully" });
     } catch (error) {
+        console.log(error);
         return next(
             new ApiError(500, `Error update product with id=${req.params.id}`)
         );

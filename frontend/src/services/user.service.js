@@ -43,6 +43,16 @@ class UserService {
         })
         return res.data;
     }
+
+    async deleteUser(id) {
+        const authStore = useAuthStore();
+        const res = await this.api.delete(`/${id}`, {
+            headers: {
+                Authorization: `Bearer ${authStore.token}`
+            }
+        })
+        return res.data;
+    }
     
     async logOut() {
         const authStore = useAuthStore();

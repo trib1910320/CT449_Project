@@ -18,7 +18,7 @@ class ToppingService {
     }
 
     async find(filter) {
-        const cursor = await this.Topping.find(filter);
+        const cursor = await this.Topping.find(filter).sort({ "date_created": -1 });
         return await cursor.toArray();
     }
 

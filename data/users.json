@@ -1,40 +1,71 @@
-[
-  {
-    "_id": {
-      "$oid": "641ac9cf4c2a1dca3beee25d"
-    },
-    "address": "An Giang",
-    "gender": "Male",
-    "name": {
-      "fullname": "Lê Trí",
-      "firstname": "Trí",
-      "lastname": "Lê"
-    },
-    "phone": "0937425239",
-    "password": "$2a$10$3LlEgoYggGniFPgHPJxSfOS2jz6AxfgwWwILYPRU80Jr9sQ9Pjwde",
-    "date_birth":"2001-1-08",
-    "admin": true,
-    "avatar": {
-      "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Monster1_bcq8zl.png"
-    }
+[{
+  "_id": {
+    "$oid": "641ac9cf4c2a1dca3beee25d"
   },
-  {
-    "_id": {
-      "$oid": "641e8985e0d96760f3698dfe"
-    },
-    "address": "Cần Thơ",
-    "gender": "Male",
-    "name": {
-      "fullname": "Coffee Admin",
-      "firstname": "Admin",
-      "lastname": "Coffee"
-    },
-    "phone": "0937425249",
-    "password": "$2a$10$NVo7xcdMFSZbvD.FRkzFDOxL7QGWC4ILCi2QK78TtH0Rc5RWdBJVW",
-    "date_birth":"2001-1-06",
-    "admin": true,
-    "avatar": {
-      "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Panda_hhvl8s.png"
-    }
+  "address": "An Giang",
+  "gender": "Male",
+  "name": {
+    "fullname": "Lê Trí",
+    "firstname": "Trí",
+    "lastname": "Lê"
+  },
+  "phone": "0937425239",
+  "password": "$2a$10$3LlEgoYggGniFPgHPJxSfOS2jz6AxfgwWwILYPRU80Jr9sQ9Pjwde",
+  "admin": true,
+  "avatar": {
+    "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Monster1_bcq8zl.png"
   }
-]
+},{
+  "_id": {
+    "$oid": "641e8985e0d96760f3698dfe"
+  },
+  "address": "Cần Thơ",
+  "gender": "Male",
+  "name": {
+    "fullname": "Coffee Admin",
+    "firstname": "Admin",
+    "lastname": "Coffee"
+  },
+  "phone": "0937425249",
+  "password": "$2a$10$NVo7xcdMFSZbvD.FRkzFDOxL7QGWC4ILCi2QK78TtH0Rc5RWdBJVW",
+  "admin": true,
+  "avatar": {
+    "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Panda_hhvl8s.png"
+  }
+},{
+  "_id": {
+    "$oid": "6454b0d5246737ec0e219b34"
+  },
+  "date_birth": "2001-03-02",
+  "gender": "Male",
+  "name": {
+    "fullname": "Le Van A",
+    "lastname": "Le",
+    "firstname": "Van A"
+  },
+  "password": "$2a$10$Zkvv5h53/fsnPkNtuPCTBOmtV0EXK8IC8pbMcRH94nOylnZSLhzBy",
+  "phone": "0832291233",
+  "admin": false,
+  "avatar": {
+    "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Panda_hhvl8s.png"
+  },
+  "address": "Cần Thơ"
+},{
+  "_id": {
+    "$oid": "64551690c12917e5ae8ef98f"
+  },
+  "address": "Vinh Long",
+  "date_birth": "2001-03-02",
+  "gender": "Male",
+  "name": {
+    "fullname": "Nguyen Truong",
+    "lastname": "Nguyen",
+    "firstname": "Truong"
+  },
+  "password": "$2a$10$jH.szWJRIu9BC3G49zFy1.3fLXcM.VyFYAVEXQzJryPP4Yid7qPTa",
+  "phone": "0832291234",
+  "admin": false,
+  "avatar": {
+    "avatar_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679476750/CoffeeShop/Panda_hhvl8s.png"
+  }
+}]

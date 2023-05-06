@@ -1,6 +1,7 @@
 const TypeService = require("../services/type.service");
 const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
+const cloudinary = require('cloudinary').v2;
 
 exports.findAll = async (req, res, next) => {
     let documents = [];
@@ -61,9 +62,6 @@ exports.update = async (req, res, next) => {
     }
     try {
         const typeService = new TypeService(MongoDB.client);
-        const findType = await typeService.findBySpecificName(req.body.name);
-        if (findType)
-            return next(new ApiError(400, "Type already exists."));
 
         const fileData = req.file;
         let document;
@@ -80,7 +78,6 @@ exports.update = async (req, res, next) => {
         }
         return res.send({ message: "Type was update successfully" });
     } catch (error) {
-        console.log(error);
         return next(
             new ApiError(500, `Error update type with id=${req.params.id}`)
         );
@@ -108,6 +105,7 @@ exports.delete = async (req, res, next) => {
 
         return res.send({ message: "Type was deleted successfully" });
     } catch (error) {
+        console.log(error);
         return next(
             new ApiError(500, `Could not delete type with id=${req.params.id}`)
         );

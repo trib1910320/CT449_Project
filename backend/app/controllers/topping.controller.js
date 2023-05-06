@@ -78,11 +78,10 @@ exports.update = async (req, res, next) => {
 exports.delete = async (req, res, next) => {
     try {
         const OrderItemService = require("../services/orderitem.service");
-        const orderItemService = new OrderItemService(MongoDB.client);
+        // const orderItemService = new OrderItemService(MongoDB.client);
         const toppingService = new ToppingService(MongoDB.client);
 
-        const findOrderItem = await orderItemService.find({});
-
+        // const findOrderItem = await orderItemService.find({});
 
         const document = await toppingService.delete(req.params.id);
         if (!document) {

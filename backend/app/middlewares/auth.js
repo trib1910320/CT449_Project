@@ -3,7 +3,6 @@ const config = require("../config");
 const ApiError = require("../api-error");
 const MongoDB = require("../utils/mongodb.util");
 const OrderService = require("../services/order.service");
-// const OrderItemService = require("../services/orderitem.service");
 
 exports.verifyToken = async (req, res, next) => {
     try {
@@ -51,7 +50,7 @@ exports.verifyAdminUser = async (req, res, next) => {
 exports.verifyAdminOrder = async (req, res, next) => {
     const orderService = new OrderService(MongoDB.client);
     const order = await orderService.findById(req.params.id);
-    if (req.user.id == order._uid || req.user.admin) {
+    if (req.user.id == order._userid || req.user.admin) {
         next();
     } else {
         return next(

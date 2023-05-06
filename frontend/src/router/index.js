@@ -41,19 +41,8 @@ const routes = [
     },
     {
         path: "/orders",
-        children: [
-            {
-                path: "",
-                name: "orders",
-                component: loadView('Orders'),
-            },
-            {
-                path: "id=:id",
-                name: "orders.detail",
-                // component: loadView('OrderDetail'),
-                props: true,
-            }
-        ],
+        name: "orders",
+        component: loadView('Orders'),
         meta: {
             requiresAuth: true
         }
@@ -64,9 +53,39 @@ const routes = [
         component: loadView('Inspiration')
     },
     {
-        path: "/manager",
-        name: "manager",
-        // component: loadView('News')
+        path: "/manage",
+        name: "manage",
+        children: [
+            {
+                path: 'users',
+                name: "manage.users",
+                component:() => import('@/views/manage/ManageUser.vue'),
+            },
+            {
+                path: "orders",
+                name: "manage.orders",
+                component:() => import('@/views/manage/ManageOrder.vue'),
+            },
+            {
+                path: "products",
+                name: "manage.products",
+                component:() => import('@/views/manage/ManageProduct.vue'),
+            },
+            {
+                path: "types",
+                name: "manage.types",
+                component:() => import('@/views/manage/ManageType.vue'),
+            },
+            {
+                path: "toppings",
+                name: "manage.toppings",
+                component:() => import('@/views/manage/ManageTopping.vue'),
+            },
+        ],
+        meta: {
+            requiresAuth: true,
+            requiresAdmin: true
+        }
     },
     {
         path: "/:pathMatch(.*)*",
@@ -82,15 +101,19 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const authStore = useAuthStore();
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        // this route requires auth, check if logged in
-        // if not, redirect to login page.
-        if (!authStore.login) {
-            next({ name: 'account' })
-        } else {
-            next() // go to wherever I'm going
-        }
+        if (!authStore.login) next({ name: 'home' })
+        else next()
     } else {
-        next() // does not require auth, make sure to always call next()!
+        next()
+    }
+})
+router.beforeEach((to, from, next) => {
+    const authStore = useAuthStore();
+    if (to.matched.some(record => record.meta.requiresAdmin)) {
+        if (authStore.admin != true) next({ name: 'home' })
+        else next()
+    } else {
+        next()
     }
 })
 export default router;

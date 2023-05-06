@@ -1,0 +1,287 @@
+[{
+  "_id": {
+    "$oid": "641c15e7a49cbc84bca5a2dd"
+  },
+  "describe": "Thức uống giúp tỉnh táo tức thì để bắt đầu ngày mới thật hứng khởi. Không đắng khét như cà phê truyền thống, The Coffee House Sữa Đá mang hương vị hài hoà đầy lôi cuốn. Là sự đậm đà của 100% cà phê Arabica Cầu Đất rang vừa tới, biến tấu tinh tế với sữa đặc và kem sữa ngọt ngào cực quyến rũ. Càng hấp dẫn hơn với topping thạch 100% cà phê nguyên chất giúp giữ trọn vị ngon đến ngụm cuối cùng.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679562233/CoffeeShop/ejoc3orw4nmj8hdqizd6.jpg",
+    "img_name": "CoffeeShop/ejoc3orw4nmj8hdqizd6"
+  },
+  "name": "The Coffee House Sữa Đá",
+  "price": 39000,
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "date_created": "19:25:21, 25/3/2023"
+},{
+  "_id": {
+    "$oid": "641c201ea49cbc84bca5a9de"
+  },
+  "describe": "Cà phê Đắk Lắk nguyên chất được pha phin truyền thống kết hợp với sữa đặc tạo nên hương vị đậm đà, hài hòa giữa vị ngọt đầu lưỡi và vị đắng thanh thoát nơi hậu vị.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679564847/CoffeeShop/ewqvyqwvoesywxoldhtl.png",
+    "img_name": "CoffeeShop/ewqvyqwvoesywxoldhtl"
+  },
+  "name": "Cà Phê Sữa Đá",
+  "price": 29000,
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "date_created": "16:47:10, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c471a0e8155f25c2854dc"
+  },
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "describe": "Cà phê được pha phin truyền thống kết hợp với sữa đặc tạo nên hương vị đậm đà, hài hòa giữa vị ngọt đầu lưỡi và vị đắng thanh thoát nơi hậu vị.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679574828/CoffeeShop/ztja4xfeu9m3m0muxowl.jpg",
+    "img_name": "CoffeeShop/ztja4xfeu9m3m0muxowl"
+  },
+  "name": "Cà Phê Sữa Nóng",
+  "price": 39000,
+  "date_created": "19:33:30, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c47580e8155f25c285511"
+  },
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "describe": "Bạc sỉu chính là \"Ly sữa trắng kèm một chút cà phê\". Thức uống này rất phù hợp những ai vừa muốn trải nghiệm chút vị đắng của cà phê vừa muốn thưởng thức vị ngọt béo ngậy từ sữa.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679574890/CoffeeShop/t00lp7c0pegh9a8yhg5c.jpg",
+    "img_name": "CoffeeShop/t00lp7c0pegh9a8yhg5c"
+  },
+  "name": "Bạc Sỉu",
+  "price": 29000,
+  "date_created": "19:34:32, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c47790e8155f25c285525"
+  },
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "describe": "Bạc sỉu chính là \"Ly sữa trắng kèm một chút cà phê\". Thức uống này rất phù hợp những ai vừa muốn trải nghiệm chút vị đắng của cà phê vừa muốn thưởng thức vị ngọt béo ngậy từ sữa.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679574924/CoffeeShop/bhogl5qzenylb4iyhalg.jpg",
+    "img_name": "CoffeeShop/bhogl5qzenylb4iyhalg"
+  },
+  "name": "Bạc Sỉu Nóng",
+  "price": 39000,
+  "date_created": "19:35:05, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c47b70e8155f25c28554b"
+  },
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "describe": "Không ngọt ngào như Bạc sỉu hay Cà phê sữa, Cà phê đen mang trong mình phong vị trầm lắng, thi vị hơn. Người ta thường phải ngồi rất lâu mới cảm nhận được hết hương thơm ngào ngạt, phảng phất mùi cacao và cái đắng mượt mà trôi tuột xuống vòm họng.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679574985/CoffeeShop/u9razdxjezrbbx1kxx9t.jpg",
+    "img_name": "CoffeeShop/u9razdxjezrbbx1kxx9t"
+  },
+  "name": "Cà Phê Đen Đá",
+  "price": 29000,
+  "date_created": "19:36:07, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c47e70e8155f25c28556b"
+  },
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "describe": "Không ngọt ngào như Bạc sỉu hay Cà phê sữa, Cà phê đen mang trong mình phong vị trầm lắng, thi vị hơn. Người ta thường phải ngồi rất lâu mới cảm nhận được hết hương thơm ngào ngạt, phảng phất mùi cacao và cái đắng mượt mà trôi tuột xuống vòm họng.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679575034/CoffeeShop/rdayuud02wav68d8kypo.jpg",
+    "img_name": "CoffeeShop/rdayuud02wav68d8kypo"
+  },
+  "name": "Cà Phê Đen Nóng",
+  "price": 39000,
+  "date_created": "19:36:55, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641d6334a936f450e64e3ab6"
+  },
+  "_typeid": "641c1a8a8d07f521f438f934",
+  "describe": "Vẫn là hương vị cà phê sữa đậm đà quen thuộc của The Coffee House nhưng khoác lên mình một chiếc áo mới tiện lợi hơn, tiết kiệm hơn phù hợp với bình thường mới, giúp bạn tận hưởng một ngày dài trọn vẹn. *Sản phẩm dùng ngon nhất trong ngày. *Sản phẩm mặc định mức đường và không đá.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1679647559/CoffeeShop/y2wmtzrcypwp8cuxhigz.jpg",
+    "img_name": "CoffeeShop/y2wmtzrcypwp8cuxhigz"
+  },
+  "name": "Cà Phê Sữa Đá Chai Fresh 250ML",
+  "price": 75000,
+  "date_created": "15:45:40, 24/3/2023"
+},{
+  "_id": {
+    "$oid": "64550a69c12917e5ae8eee62"
+  },
+  "_typeid": "641c1a8a8d07f521f438f937",
+  "describe": "Vị đắng nhẹ từ cà phê phin truyền thống kết hợp Espresso Ý, lẫn chút ngọt ngào của kem sữa và lớp foam trứng cacao, nhấn thêm hạnh nhân nướng thơm bùi, kèm topping thạch cà phê dai giòn mê ly. Tất cả cùng quyện hoà trong một thức uống làm vị giác \"thức giấc\", thơm ngon hết nấc.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683294843/CoffeeShop/ja7yny2dikbqqpdismov.png",
+    "img_name": "CoffeeShop/ja7yny2dikbqqpdismov"
+  },
+  "name": "Hạnh Nhân Nướng",
+  "price": 49000,
+  "date_created": "20:53:45, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550a8cc12917e5ae8eee84"
+  },
+  "_typeid": "641c1a8a8d07f521f438f937",
+  "describe": "Ngon khó cưỡng bởi xíu đắng nhẹ từ cà phê phin truyền thống pha trộn với Espresso lừng danh nước Ý, quyện vị kem sữa và caramel ngọt ngọt, thêm lớp foam trứng cacao bồng bềnh béo mịn, kèm topping thạch cà phê dai giòn nhai cực cuốn. Một thức uống \"điểm mười\" cho cả ngày tươi không cần tưới.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683294878/CoffeeShop/nhuen2iegbsojyvvwiu5.jpg",
+    "img_name": "CoffeeShop/nhuen2iegbsojyvvwiu5"
+  },
+  "name": "CloudFee Caramel",
+  "price": 49000,
+  "date_created": "20:56:41, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550aa9c12917e5ae8eeea5"
+  },
+  "_typeid": "641c1a8a8d07f521f438f937",
+  "describe": "Khiến bạn mê mẩn ngay ngụm đầu tiên bởi vị đắng nhẹ của cà phê phin truyền thống kết hợp Espresso Ý, quyện hòa cùng chút ngọt ngào của kem sữa, và thơm béo từ foam trứng cacao. Nhấp một ngụm rồi nhai cùng thạch cà phê dai dai giòn giòn, đúng chuẩn \"ngon quên lối về\". CloudFee Classic là món đậm vị cà phê nhất trong bộ sưu tập nhưng không quá đắng, ngậy nhưng không hề ngấy.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683294907/CoffeeShop/zt5ynjic3dh1tfld2h0h.jpg",
+    "img_name": "CoffeeShop/zt5ynjic3dh1tfld2h0h"
+  },
+  "name": "CloudFee Hà Nội",
+  "price": 49000,
+  "date_created": "20:54:49, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550b53c12917e5ae8eef4a"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Chiếc trà sữa chân ái dành cho tín đồ hảo ngọt gọi tên CloudTea Oolong Nướng Caramel. Sự kết hợp của foam trứng béo mịn, caramel thơm lừng, trà Oolong nướng rõ vị quyện kem sữa ngọt ngào, làm tan chảy vị giác tựa khoảnh khắc chạm môi người thương. Thêm bột cacao đậm đà và thạch Oolong nướng dai giòn giúp độ ngon nhân đôi.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295077/CoffeeShop/atpucggcncl14i5xauqd.jpg",
+    "img_name": "CoffeeShop/atpucggcncl14i5xauqd"
+  },
+  "name": "Oolong Nướng Caramel",
+  "price": 55000,
+  "date_created": "20:57:39, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550b6dc12917e5ae8eef6f"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Trà sữa đá xay - phiên bản nâng cấp đầy mới lạ của trà sữa truyền thống, lần đầu xuất hiện tại Nhà. Ngon khó cưỡng với lớp kem dừa béo ngậy nhưng không ngấy, thêm vụn bánh quy phô mai giòn tan vui miệng. Trà Oolong nướng rõ hương đậm vị, quyện với sữa dừa beo béo, được xay mịn cùng đá, mát rượi trong tích tắc. Đặc biệt, thạch Oolong nướng nguyên chất giúp giữ trọn vị đậm đà của trà sữa đến giọt cuối cùng.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295103/CoffeeShop/dmcvscum9rstwvbjmdnb.jpg",
+    "img_name": "CoffeeShop/dmcvscum9rstwvbjmdnb"
+  },
+  "name": "Oolong Nướng Kem Dừa Đá Xay",
+  "price": 55000,
+  "date_created": "20:58:05, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550b88c12917e5ae8eef90"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Vừa chạm môi là mê mẩn ngay lớp kem dừa beo béo, kèm vụn bánh quy phô mai giòn tan trong miệng. Đặc biệt, trà Oolong nướng đậm đà, hòa cùng sữa dừa ngọt dịu. Hương vị thêm bùng nổ nhờ có thạch Oolong nướng nguyên chất, giòn dai.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295130/CoffeeShop/jzs3hrjhet1fbksw1j97.png",
+    "img_name": "CoffeeShop/jzs3hrjhet1fbksw1j97"
+  },
+  "name": "Oolong Nướng Kem Dừa",
+  "price": 55000,
+  "date_created": "20:58:32, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550c3dc12917e5ae8ef04d"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Hội mê cheese sao có thể bỏ lỡ chiếc trà sữa siêu mlem này. Món đậm vị Oolong nướng - nền trà được yêu thích nhất hiện nay, quyện thêm kem sữa thơm béo. Đặc biệt, chinh phục ngay fan ghiền cheese bởi lớp foam phô mai mềm tan mằn mặn. Càng ngon cực với thạch Oolong nướng nguyên chất giòn dai nhai siêu thích.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295312/CoffeeShop/nodv7fp1duebysopgrba.jpg",
+    "img_name": "CoffeeShop/nodv7fp1duebysopgrba"
+  },
+  "name": "Oolong Nướng Kem Cheese",
+  "price": 55000,
+  "date_created": "21:01:33, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550c66c12917e5ae8ef079"
+  },
+  "_typeid": "641c1a8a8d07f521f438f93b",
+  "describe": "Vị trà hoa Hibiscus chua chua, kết hợp cùng đá tuyết Yuzu mát lạnh tái tê, thêm miếng vải căng mọng, ngọt ngào sẽ khiến bạn thích thú ngay từ lần thử đầu tiên.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295352/CoffeeShop/kfrqt8g4w3vvxxs24eyb.jpg",
+    "img_name": "CoffeeShop/kfrqt8g4w3vvxxs24eyb"
+  },
+  "name": "Hi Tea Đá Tuyết Yuzu Vải",
+  "price": 59000,
+  "date_created": "21:03:11, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550cbec12917e5ae8ef0db"
+  },
+  "_typeid": "641c1a8a8d07f521f438f93b",
+  "describe": "Nền trà Hibiscus thanh mát, quyện vị chua chua ngọt ngọt của phúc bồn tử 100% tự nhiên cùng quýt mọng nước mang đến cảm giác sảng khoái tức thì.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295440/CoffeeShop/ojxg48cnyzzh4ewfg788.jpg",
+    "img_name": "CoffeeShop/ojxg48cnyzzh4ewfg788"
+  },
+  "name": "Hi Tea Phúc Bồn Tử Mandarin",
+  "price": 49000,
+  "date_created": "21:03:42, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550cfdc12917e5ae8ef133"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Không chỉ nổi bật với sắc đỏ đặc trưng từ trà hoa Hibiscus, Hi-Tea Yuzu còn gây ấn tượng với topping Yuzu (quýt Nhật) lạ miệng, kết hợp cùng trân châu trắng dai giòn sần sật, nhai vui vui.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295503/CoffeeShop/aleanrx8crjeh0g9mfts.png",
+    "img_name": "CoffeeShop/aleanrx8crjeh0g9mfts"
+  },
+  "name": "Hi Tea Yuzu Trân Châu",
+  "price": 49000,
+  "date_created": "21:04:45, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550d21c12917e5ae8ef15c"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Chút ngọt ngào của Vải, mix cùng vị chua thanh tao từ trà hoa Hibiscus, mang đến cho bạn thức uống đúng chuẩn vừa ngon, vừa healthy.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295539/CoffeeShop/cljlpqd8qgwphibtp2s6.png",
+    "img_name": "CoffeeShop/cljlpqd8qgwphibtp2s6"
+  },
+  "name": "Hi Tea Vải",
+  "price": 49000,
+  "date_created": "21:05:21, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550d3dc12917e5ae8ef186"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Sự kết hợp ăn ý giữa Đào cùng trà hoa Hibiscus, tạo nên tổng thể hài hoà dễ gây “thương nhớ” cho team thích món thanh mát, có vị chua nhẹ.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295567/CoffeeShop/uhp0hwwnkwerpiy1ydpu.jpg",
+    "img_name": "CoffeeShop/uhp0hwwnkwerpiy1ydpu"
+  },
+  "name": "Hi Tea Đào",
+  "price": 49000,
+  "date_created": "21:05:49, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550d68c12917e5ae8ef1ba"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Sự kết hợp độc đáo giữa 3 sắc thái hương vị khác nhau: trà hoa Hibiscus chua thanh, Mận muối mặn mặn và Dâu tây tươi Đà Lạt cô đặc ngọt dịu. Ngoài ra, topping Aloe Vera tươi mát, ngon ngất ngây, đẹp đắm say, hứa hẹn sẽ khuấy đảo hè này.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295611/CoffeeShop/xfjqcjm8nr5gvngijcs6.jpg",
+    "img_name": "CoffeeShop/xfjqcjm8nr5gvngijcs6"
+  },
+  "name": "Hi Tea Dâu Tây Mận Muối Aloe Vera",
+  "price": 49000,
+  "date_created": "21:06:32, 5/5/2023"
+},{
+  "_id": {
+    "$oid": "64550d81c12917e5ae8ef1e3"
+  },
+  "_typeid": "641c1a8a8d07f521f438f938",
+  "describe": "Với nền trà Hibiscus 0% caffeine và thơm giàu vitamin C, Hi-Tea Thơm là thức uống dành cho hội healthy. Đặc biệt, Hi-Tea Thơm chua chua ngọt ngọt thêm phần hấp dẫn nhờ kết hợp cùng trân châu trắng giòn dai cực vui miệng.",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1683295635/CoffeeShop/ktdbo0s8isoc9kkgnvrg.jpg",
+    "img_name": "CoffeeShop/ktdbo0s8isoc9kkgnvrg"
+  },
+  "name": "Hi Tea Thơm Trân Châu",
+  "price": 49000,
+  "date_created": "21:06:57, 5/5/2023"
+}]

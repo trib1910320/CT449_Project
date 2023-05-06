@@ -1,79 +1,71 @@
-[
-  {
-    "_id": {
-      "$oid": "641c1a8a8d07f521f438f934"
-    },
-    "name": "Coffee",
-    "image":{
-      "img_data":"https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/ca-phe-uong-lien_iyl9hh.png",
-      "img_name":"CoffeeShop/Type/ca-phe-uong-lien_iyl9hh"
-    },
-    "date_created": "16:22:01, 23/3/2023"
+[{
+  "_id": {
+    "$oid": "641c1a8a8d07f521f438f934"
   },
-  {
-    "_id": {
-      "$oid": "641c1a8a8d07f521f438f937"
-    },
-    "name": "CloudFee",
-    "image":{
-      "img_data":"https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/cloudfee-new_lipw9o.png",
-      "img_name":"CoffeeShop/Type/cloudfee-new_lipw9o"
-    },
-    "date_created": "16:22:01, 23/3/2023"
+  "name": "Cà Phê",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/ca-phe-uong-lien_iyl9hh.png",
+    "img_name": "CoffeeShop/Type/ca-phe-uong-lien_iyl9hh"
   },
-  {
-    "_id": {
-      "$oid": "641c1a8a8d07f521f438f938"
-    },
-    "name": "CloudTea",
-    "image":{
-      "img_data":"https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/cloudtea_wdjeqn.png",
-      "img_name":"CoffeeShop/Type/cloudtea_wdjeqn"
-    },
-    "date_created": "16:22:01, 23/3/2023"
+  "date_created": "16:22:01, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c1a8a8d07f521f438f937"
   },
-  {
-    "_id": {
-      "$oid": "641c1a8a8d07f521f438f939"
-    },
-    "name": "Trà trái cây - Trà sữa",
-    "image":{
-      "img_data":"https://res.cloudinary.com/duq8p0taa/image/upload/v1680094230/CoffeeShop/Type/tra-trai-cay_pmi4sb.png",
-      "img_name":"CoffeeShop/Type/tra-trai-cay_pmi4sb"
-    },
-    "date_created": "16:22:01, 23/3/2023"
+  "name": "CloudFee",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/cloudfee-new_lipw9o.png",
+    "img_name": "CoffeeShop/Type/cloudfee-new_lipw9o"
   },
-  {
-    "_id": {
-      "$oid": "641c1a8a8d07f521f438f93b"
-    },
-    "name": "Hi-Tea Healthy",
-    "image":{
-      "img_data":"https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/hi-tea_w0aux9.png",
-      "img_name":"CoffeeShop/Type/hi-tea_w0aux9"
-    },
-    "date_created": "16:22:01, 23/3/2023"
+  "date_created": "16:22:01, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c1a8a8d07f521f438f938"
   },
-  {
-    "_id": {
-      "$oid": "641c1a8a8d07f521f438f93c"
-    },
-    "name": "Bánh - Snack",
-    "image":{
-      "img_data":"https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/banh_nadxv9.png",
-      "img_name":"CoffeeShop/Type/banh_nadxv9"
-    },
-    "date_created": "16:22:01, 23/3/2023"
+  "name": "CloudTea",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/cloudtea_wdjeqn.png",
+    "img_name": "CoffeeShop/Type/cloudtea_wdjeqn"
   },
-  {
-    "_id": {
-      "$oid": "641c1a8a8d07f521f438f93d"
-    },
-    "name": "Thức uống khác",
-    "image":{
-      "img_data":"https://res.cloudinary.com/duq8p0taa/image/upload/v1680094230/CoffeeShop/Type/thuc-uong-khac_nizd9a.png",
-      "img_name":"CoffeeShop/Type/thuc-uong-khac_nizd9a"
-    },
-    "date_created": "16:22:01, 23/3/2023"
-  }
-]
+  "date_created": "16:22:01, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c1a8a8d07f521f438f939"
+  },
+  "name": "Trà trái cây - Trà sữa",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1680094230/CoffeeShop/Type/tra-trai-cay_pmi4sb.png",
+    "img_name": "CoffeeShop/Type/tra-trai-cay_pmi4sb"
+  },
+  "date_created": "16:22:01, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c1a8a8d07f521f438f93b"
+  },
+  "name": "Hi-Tea Healthy",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/hi-tea_w0aux9.png",
+    "img_name": "CoffeeShop/Type/hi-tea_w0aux9"
+  },
+  "date_created": "16:22:01, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c1a8a8d07f521f438f93c"
+  },
+  "name": "Bánh - Snack",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1680094229/CoffeeShop/Type/banh_nadxv9.png",
+    "img_name": "CoffeeShop/Type/banh_nadxv9"
+  },
+  "date_created": "16:22:01, 23/3/2023"
+},{
+  "_id": {
+    "$oid": "641c1a8a8d07f521f438f93d"
+  },
+  "name": "Thức uống khác",
+  "image": {
+    "img_data": "https://res.cloudinary.com/duq8p0taa/image/upload/v1680094230/CoffeeShop/Type/thuc-uong-khac_nizd9a.png",
+    "img_name": "CoffeeShop/Type/thuc-uong-khac_nizd9a"
+  },
+  "date_created": "16:22:01, 23/3/2023"
+}]

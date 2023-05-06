@@ -1,7 +1,7 @@
 <template >
     <div class="text-center fs-3 text-black fw-bold">
-        <i class="fa-solid fa-clipboard-check mx-2" style="color: orange;"></i>
-        <span>Xác nhận đơn hàng</span>
+        <i class="fa-solid fa-clipboard-check mx-3" style="color: orange;"></i>
+        <span>Order confirmation</span>
     </div>
     <Form @submit="submitOrder" :validation-schema="orderFormSchema">
         <div class="row">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div v-else class="my-3 text-center">
-                        <router-link class="btn btn-primary p-2 fs-5 fw-bolder" :to="{ name: 'products' }">
+                        <router-link class="btn btn-outline-primary p-2 fs-5 fw-bolder" :to="{ name: 'products' }">
                             Add product
                         </router-link>
                     </div>
@@ -81,7 +81,7 @@
                     <h6 class="title">Total</h6>
                     <div class="d-flex align-items-center justify-content-between">
                         <div class=" d-flex">
-                            <h5 class="mb-0 fw-bold">Thành tiền:</h5>
+                            <h5 class="mb-0 fw-bold">Into money:</h5>
                         </div>
                         <h5 class=" mb-0">
                             {{ this.totalMoney.toLocaleString('it-IT', {
@@ -94,6 +94,11 @@
                         Order
                     </button>
                 </div>
+                <div v-if="this.cart.length != 0">
+                    <button type="button" class="btn btn-outline-danger fw-bold w-100" @click="clearCart">
+                        Clear list
+                    </button>
+                </div>
             </div>
         </div>
     </Form>
@@ -101,10 +106,11 @@
 <script>
 import CartItem from "@/components/CartItem.vue";
 
+import UserService from "@/services/user.service";
 import OrderService from "@/services/order.service";
 import OrderItemService from "@/services/orderitem.service";
 
-import { useCartStore, } from '@/stores/store';
+import { useCartStore, useAuthStore } from '@/stores/store';
 import * as yup from "yup";
 import { Form, Field, ErrorMessage } from "vee-validate";
 export default {
@@ -117,7 +123,7 @@ export default {
                 .string()
                 .required("Please enter the recipient's name.")
                 .min(4, "Must have at least 4 characters.")
-                .max(20, "First name has at most 20 characters."),
+                .max(20, "Name has at most 20 characters."),
             phone: yup
                 .string()
                 .required("Please enter the recipient's phone number.")
@@ -128,16 +134,17 @@ export default {
                 .string()
                 .required("Please enter the recipient's address.")
                 .min(8, "Must have at least 8 characters.")
-                .max(50, "Account has at most 50 characters."),
+                .max(40, "Address has at most 40 characters."),
             note: yup
                 .string()
-                .max(100, "Account has at most 50 characters."),
+                .max(100, "Note has at most 100 characters."),
             payment: yup
                 .string()
                 .required("Please choose payment method."),
 
         });
         return {
+            authStore: useAuthStore(),
             cartStore: useCartStore(),
             orderFormSchema,
             orderLocal: { payment: "Cash" },
@@ -149,18 +156,38 @@ export default {
         getCart() {
             this.cart = this.cartStore.cart;
         },
-        async submitOrder() {
-            let orderItem = [];
-            for (const cartitem of this.cart) {
-                const orderI = await OrderItemService.createOrderItem(cartitem);
-                orderItem.push(orderI._id);
-            }
-            await OrderService.createOrder(this.orderLocal, orderItem);
+        clearCart(){
             this.cartStore.resetCart();
-            this.$router.push({ name: 'orders'});
+            this.$router.push({ name: 'products' });
         },
+        async submitOrder() {
+            if (!this.authStore.login) {
+                alert("Vui lòng đăng nhập để đặt hàng");
+            } else {
+                let orderItem = [];
+                for (const cartitem of this.cart) {
+                    const orderI = await OrderItemService.createOrderItem(cartitem);
+                    orderItem.push(orderI._id);
+                }
+                await OrderService.createOrder(this.orderLocal, orderItem);
+                this.cartStore.resetCart();
+                this.$router.push({ name: 'orders' });
+            }
+        },
+        async getUser(){
+            if(this.authStore.login){
+                const user = await UserService.getOne(this.authStore.userid);
+                this.orderLocal = {
+                    ...this.orderLocal,
+                    name: user.name.fullname,
+                    phone: user.phone,
+                    address: user.address
+                }
+            }
+        }
     },
     created() {
+        this.getUser();
         this.getCart();
     }
 }

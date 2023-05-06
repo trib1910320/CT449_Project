@@ -17,16 +17,16 @@ class TypeService {
             (key) => type[key] === undefined && delete type[key]
         );
 
-        Object.keys(product.image).forEach(
-            (key) => product.image[key] === undefined && delete product.image[key]
+        Object.keys(type.image).forEach(
+            (key) => type.image[key] === undefined && delete type.image[key]
         );
-        if (Object.keys(product.image).length == 0) { delete product.image };
+        if (Object.keys(type.image).length == 0) { delete type.image };
 
         return type;
     }
 
     async find(filter) {
-        const cursor = await this.Type.find(filter);
+        const cursor = await this.Type.find(filter).sort({ "date_created": -1 });
         return await cursor.toArray();
     }
 

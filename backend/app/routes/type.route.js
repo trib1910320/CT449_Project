@@ -11,6 +11,6 @@ router.route("/")
 router.route("/:id")
     .get(types.findOne)
     .put(auth.verifyToken, auth.verifyAdmin, uploadCloud.single('image'), types.update)
-    .delete(auth.verifyToken, auth.verifyAdmin, types.delete)
+    .delete(auth.verifyToken,uploadCloud.single('image'), auth.verifyAdmin, types.delete)
 
 module.exports = router;

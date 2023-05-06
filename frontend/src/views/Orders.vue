@@ -1,20 +1,20 @@
 <template >
     <div class="text-center fs-3 text-black fw-bold">
         <i class="fa-solid fa-clipboard-list mx-2" style="color: orange;"></i>
-        <span>Danh sách đơn hàng</span>
+        <span>Order List</span>
     </div>
-    <div class="card">
+    <div class="card table-responsive">
         <table class="table table-borderless">
             <thead>
                 <tr class="table-primary">
-                    <th>Mã đơn hàng</th>
-                    <th>Tên người nhận</th>
-                    <th>Số điện thoại</th>
-                    <th>Địa chỉ</th>
-                    <th>Thanh toán</th>
-                    <th>Tổng tiền</th>
-                    <th>Ngày đặt</th>
-                    <th>Trạng thái:</th>
+                    <th>Code orders</th>
+                    <th>Recipient's name</th>
+                    <th>Phone number</th>
+                    <th>Address</th>
+                    <th>Payment methods</th>
+                    <th>Total amount</th>
+                    <th>Booking date</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
@@ -38,10 +38,22 @@
                         <span v-else class="text-success">Hoàn thành</span>
                     </td>
                     <td>
+                        <button class="btn btn-outline-primary mx-1" data-bs-toggle="modal" :data-bs-target="'#orderDetailModal' + order._id">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
                         <button v-if="order.status == 0" class="btn btn-outline-danger" @click="deleteOrder(order._id)">
-                            Hủy
+                            <i class="fa-solid fa-trash"></i>
                         </button>
                     </td>
+                    <!-- Modal OrderDetail-->
+                    <div class="modal fade" :id="'orderDetailModal' + order._id" tabindex="-1" aria-labelledby="orderDetailModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <OrderDetail :order="order" @delete:order="deleteOrder" modalLabels="orderDetailModalLabel" />
+                            </div>
+                        </div>
+                    </div>
                 </tr>
             </tbody>
         </table>
@@ -49,12 +61,12 @@
 </template>
 <script>
 import OrderService from "@/services/order.service";
-import OrderItemService from "@/services/orderitem.service";
+import OrderDetail from "@/components/order/OrderDetail.vue";
 
 import { useCartStore, } from '@/stores/store';
 export default {
     components: {
-
+        OrderDetail
     },
     data() {
         return {
@@ -64,9 +76,9 @@ export default {
     },
     methods: {
         async getOrders() {
-            this.orders = await OrderService.getAll();
+            this.orders = await OrderService.getUser();
         },
-        async deleteOrder(id){
+        async deleteOrder(id) {
             await OrderService.deleteOrder(id);
             this.$router.go();
         }

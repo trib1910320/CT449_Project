@@ -4,7 +4,7 @@
       <h3 class="modal-title" :id="modalLabels">
         <slot></slot>
       </h3>
-      <button class="btn border-0 text-danger" type="reset" data-bs-dismiss="modal" aria-label="Close">
+      <button class="btn border-0 text-danger" type="button" data-bs-dismiss="modal" aria-label="Close">
         <i class="fa-sharp fa-solid fa-circle-xmark" style="font-size: 1.5rem;"></i>
       </button>
     </div>
@@ -39,6 +39,11 @@
           <ErrorMessage name="repassword" class="error-feedback" />
         </div>
       </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <Field name="address" type="text" class="form-control" v-model="userLocal.address" />
+        <ErrorMessage name="address" class="error-feedback" />
+      </div>
       <div class="form-group row">
         <div class="col-6">
           <strong for="gender">Gender</strong>
@@ -57,11 +62,15 @@
     </div>
     <div class="modal-footer justify-content-center">
       <div class="form-group">
-        <button class="btn btn-success mx-1" type="submit">
+        <button v-if="userLocal._id" class="btn btn-success mx-1" type="submit">
+          <i class="fa-solid fa-floppy-disk mx-1"></i>
+          Save changes
+        </button>
+        <button v-else class="btn btn-success mx-1" type="submit">
           <i class="fa-solid fa-floppy-disk mx-1"></i>
           Register
         </button>
-        <button type="reset" class="ml-2 btn btn-danger mx-1" data-bs-dismiss="modal">
+        <button type="button" class="ml-2 btn btn-danger mx-1" data-bs-dismiss="modal">
           <i class="fa-solid fa-trash-can mx-1"></i>
           Cancel
         </button>
@@ -104,12 +113,12 @@ export default {
         .string()
         .required("Please enter your password.")
         .min(8, "Must have at least 8 characters.")
-        .max(50, "Password has at most 50 characters."),
+        .max(30, "Password has at most 30 characters."),
       repassword: yup
         .string()
         .required("Please enter your re-password.")
         .min(8, "Must have at least 8 characters.")
-        .max(50, "Re-Password has at most 50 characters.")
+        .max(30, "Re-Password has at most 30 characters.")
         .oneOf([yup.ref('password'), null], "Re-Password does not match"),
       date_birth: yup
         .date()
@@ -117,7 +126,10 @@ export default {
         .max(new Date(Date.now() - 315569520000), "You must be at least 10 years"),
       gender: yup
         .string()
-        .required("Please choose your gender.")
+        .required("Please choose your gender."),
+      address: yup
+        .string()
+        .max(40, "Address has at most 50 characters."),
     });
     return {
       userFormSchema,
@@ -131,7 +143,19 @@ export default {
     deleteUser() {
       this.$emit("delete:user", this.userLocal.id);
     },
+    getUserInfo() {
+      if (this.user._id) {
+        this.userLocal = {
+          ...this.userLocal,
+          lastname: this.userLocal.name.lastname,
+          firstname: this.userLocal.name.firstname
+        }
+      }
+    }
   },
+  created() {
+    this.getUserInfo()
+  }
 }
 </script>
 

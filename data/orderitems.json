@@ -1,0 +1,83 @@
+[{
+  "_id": {
+    "$oid": "64544b30d46cc73a1c02ff4c"
+  },
+  "_productid": "641c471a0e8155f25c2854dc",
+  "date_created": "07:17:52, 5/5/2023",
+  "quantity": 1,
+  "size": "Small",
+  "topping": [],
+  "total_amount": 39000
+},{
+  "_id": {
+    "$oid": "6454a899246737ec0e219674"
+  },
+  "_productid": "641c471a0e8155f25c2854dc",
+  "date_created": "13:56:25, 5/5/2023",
+  "quantity": 1,
+  "size": "Big",
+  "topping": [],
+  "total_amount": 49000
+},{
+  "_id": {
+    "$oid": "6454a8dd246737ec0e2196aa"
+  },
+  "_productid": "641c47580e8155f25c285511",
+  "date_created": "13:57:33, 5/5/2023",
+  "quantity": 1,
+  "size": "Small",
+  "topping": [
+    "641e809be0d96760f3698808"
+  ],
+  "total_amount": 39000
+},{
+  "_id": {
+    "$oid": "6454a8dd246737ec0e2196ad"
+  },
+  "_productid": "641c201ea49cbc84bca5a9de",
+  "date_created": "13:57:33, 5/5/2023",
+  "quantity": 2,
+  "size": "Medium",
+  "topping": [],
+  "total_amount": 66000
+},{
+  "_id": {
+    "$oid": "6454a8dd246737ec0e2196b0"
+  },
+  "_productid": "641c47b70e8155f25c28554b",
+  "date_created": "13:57:33, 5/5/2023",
+  "quantity": 1,
+  "size": "Small",
+  "topping": [],
+  "total_amount": 29000
+},{
+  "_id": {
+    "$oid": "6454b122246737ec0e219b8e"
+  },
+  "_productid": "641c47b70e8155f25c28554b",
+  "date_created": "14:32:50, 5/5/2023",
+  "quantity": 2,
+  "size": "Small",
+  "topping": [],
+  "total_amount": 58000
+},{
+  "_id": {
+    "$oid": "6454b122246737ec0e219b91"
+  },
+  "_productid": "641c471a0e8155f25c2854dc",
+  "date_created": "14:32:50, 5/5/2023",
+  "quantity": 1,
+  "size": "Small",
+  "topping": [],
+  "total_amount": 39000
+},{
+  "_id": {
+    "$oid": "6454cd8c246737ec0e21b1f6"
+  },
+  "_productid": "641c47b70e8155f25c28554b",
+  "date_created": "16:34:04, 5/5/2023",
+  "quantity": 1,
+  "size": "Small",
+  "topping": [],
+  "total_amount": 29000
+}]

@@ -15,6 +15,14 @@ class OrderService {
         return res.data;
     }
 
+    async getUser() {
+        const authStore = useAuthStore();
+        const res =await this.api.get(('/user'),{
+            headers:{Authorization:`Bearer ${authStore.token}`}
+        });
+        return res.data;
+    }
+
     async getAll() {
         const authStore = useAuthStore();
         const res =await this.api.get(('/'),{
@@ -42,9 +50,9 @@ class OrderService {
         return res.data;
     }
 
-    async updateOrder(id, data) {
+    async updateOrder(data) {
         const authStore = useAuthStore();
-        const res = await this.api.put(`/${id}`, data, {
+        const res = await this.api.put(`/${data.id}`, {status: data.status}, {
             headers: {
                 Authorization: `Bearer ${authStore.token}`
             }

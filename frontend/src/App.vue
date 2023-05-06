@@ -2,9 +2,19 @@
   <div class="container-fluid">
     <AppHeader />
     <div class="container-fluid py-1">
-      <router-view :key="$route.fullPath" />
+      <div v-if="($route.matched[0]?.name == 'manage')" class="row">
+        <div class="col-lg-3">
+          <NavManage/>
+        </div>
+        <div class="col-lg-9">
+          <router-view :key="$route.fullPath" />
+        </div>
+      </div>
+      <div v-else>
+        <router-view :key="$route.fullPath" />
+      </div>
     </div>
-    <AppFooter/>
+    <AppFooter />
     <div class="fixed-bottom">
       <button class="back-top btn btn-outline-primary" @click="scrollToTop()">
         <i class="fa-solid fa-arrow-up"></i>
@@ -16,10 +26,10 @@
 <script>
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
-
+import NavManage from "@/components/NavManage.vue";
 export default {
   components: {
-    AppHeader, AppFooter
+    AppHeader, AppFooter, NavManage
   },
   methods: {
     scrollToTop() {

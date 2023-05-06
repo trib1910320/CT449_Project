@@ -37,7 +37,7 @@
         </div>
         <div v-if="filteredProductsCount > 0" class="row justify-content-center my-5">
             <div class="text-center fs-2 text-black fw-bold">
-                <span>Sản phẩm mới</span>
+                <span>New product</span>
             </div>
             <ProductCard v-for="(product) in this.products" :key="product._id" :product="product" />
         </div>

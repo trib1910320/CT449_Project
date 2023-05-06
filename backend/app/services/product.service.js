@@ -38,17 +38,17 @@ class ProductService {
         return await cursor.toArray();
     }
 
-    async findByName(name) {
-        const cursor = await this.Product.find({
-            name: { $regex: new RegExp(name)},
-        });
-        return await cursor.toArray();
-    }
+    // async findByName(name) {
+    //     const cursor = await this.Product.find({
+    //         name: { $regex: new RegExp(name)},
+    //     }).sort({ "date_created": -1 });
+    //     return await cursor.toArray();
+    // }
 
     async findByTypeId(typeid) {
         const cursor = this.Product.find({
             _typeid: typeid ? typeid.toString() : null
-        });
+        }).sort({ "date_created": -1 });
         return await cursor.toArray();
     }
 

@@ -54,7 +54,7 @@
                     </li>
                     <li>
                         <router-link v-if="this.authStore.admin" class="btn dropdown-item" :to="{
-                            name: 'manager'
+                            name: 'manage.users'
                         }">
                             <i class="fa-solid fa-id-card-clip"></i> Manager
                         </router-link>
@@ -136,7 +136,8 @@ export default {
     methods: {
         async logout() {
             await UserService.logOut();
-            await this.authStore.logOut();
+            this.authStore.logOut();
+            this.cartStore.resetCart();
             this.$router.go();
         },
         async login(data) {

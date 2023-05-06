@@ -1,4 +1,5 @@
 import createApiClient from "./api.service";
+import { useAuthStore } from '@/stores/store';
 
 class ProductService {
     constructor(baseUrl = "/api/products") {
@@ -21,13 +22,42 @@ class ProductService {
         return res.data;
     }
 
-    async productByName(name) {
-        const res = await this.api.get("/", { params: { name: name } });
+    async productOne(id) {
+        const res = await this.api.get(`/${id}`)
         return res.data;
     }
 
-    async productOne(id) {
-        const res = await this.api.get(`/${id}`)
+    async createProduct(data) {
+        const authStore = useAuthStore();
+        const res = await this.api.post('/', data,  {
+            headers: {
+                Authorization: `Bearer ${authStore.token}`,
+                "Content-Type": "multipart/form-data",
+                Accept: "multipart/form-data",
+            }
+        })
+        return res.data;
+    }
+
+    async updateProduct(data) {
+        const authStore = useAuthStore();
+        const res = await this.api.put(`/${data._id}`, data,  {
+            headers: {
+                Authorization: `Bearer ${authStore.token}`,
+                "Content-Type": "multipart/form-data",
+                Accept: "multipart/form-data",
+            }
+        })
+        return res.data;
+    }
+
+    async deleteProduct(id) {
+        const authStore = useAuthStore();
+        const res = await this.api.delete(`/${id}`, {
+            headers: {
+                Authorization: `Bearer ${authStore.token}`
+            }
+        })
         return res.data;
     }
 }

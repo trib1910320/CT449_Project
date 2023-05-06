@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "64544b31d46cc73a1c02ff4f"
+  },
+  "_userid": "641ac9cf4c2a1dca3beee25d",
+  "date_created": "07:17:53, 5/5/2023",
+  "order_items": [
+    "64544b30d46cc73a1c02ff4c"
+  ],
+  "payment": "MoMo",
+  "receiver": {
+    "name": "Le Duong Tri",
+    "phone": "0909330912",
+    "address": "Long Xuyen"
+  },
+  "total_amount": 39000,
+  "status": 2
+},{
+  "_id": {
+    "$oid": "6454a899246737ec0e219677"
+  },
+  "_userid": "641ac9cf4c2a1dca3beee25d",
+  "date_created": "13:56:25, 5/5/2023",
+  "order_items": [
+    "6454a899246737ec0e219674"
+  ],
+  "payment": "Cash",
+  "receiver": {
+    "name": "Lê Trí",
+    "phone": "0937425239",
+    "address": "Long Xuyen"
+  },
+  "total_amount": 49000,
+  "status": 1
+},{
+  "_id": {
+    "$oid": "6454a8dd246737ec0e2196b5"
+  },
+  "_userid": "641ac9cf4c2a1dca3beee25d",
+  "date_created": "13:57:33, 5/5/2023",
+  "note": "Để đá riêng",
+  "order_items": [
+    "6454a8dd246737ec0e2196aa",
+    "6454a8dd246737ec0e2196ad",
+    "6454a8dd246737ec0e2196b0"
+  ],
+  "payment": "Cash",
+  "receiver": {
+    "name": "Lê Trí",
+    "phone": "0937425239",
+    "address": "Ninh Kiều,Cần Thơ"
+  },
+  "total_amount": 134000,
+  "status": 0
+},{
+  "_id": {
+    "$oid": "6454b122246737ec0e219b95"
+  },
+  "_userid": "6454b0d5246737ec0e219b34",
+  "date_created": "14:32:50, 5/5/2023",
+  "order_items": [
+    "6454b122246737ec0e219b8e",
+    "6454b122246737ec0e219b91"
+  ],
+  "payment": "Cash",
+  "receiver": {
+    "name": "Le Van A",
+    "phone": "0832291233",
+    "address": "Long Xuyen"
+  },
+  "total_amount": 97000,
+  "status": 0
+},{
+  "_id": {
+    "$oid": "6454cd8c246737ec0e21b1f9"
+  },
+  "_userid": "641ac9cf4c2a1dca3beee25d",
+  "date_created": "16:34:04, 5/5/2023",
+  "order_items": [
+    "6454cd8c246737ec0e21b1f6"
+  ],
+  "payment": "Cash",
+  "receiver": {
+    "name": "Lê Trí",
+    "phone": "0937425239",
+    "address": "An Giang"
+  },
+  "total_amount": 29000,
+  "status": 0
+}]

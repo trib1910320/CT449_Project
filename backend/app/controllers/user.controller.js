@@ -3,6 +3,7 @@ const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 const jwt = require("jsonwebtoken");
 const config = require("../config");
+const cloudinary = require('cloudinary').v2;
 
 exports.findAll = async (req, res, next) => {
     let documents = [];
