@@ -47,7 +47,7 @@
         <span>{{ order.note }}</span>
     </div>
     <div class="modal-footer justify-content-center">
-        <div v-if="this.authStore.admin == true && ($route.name == 'manage')">
+        <div v-if="this.authStore.admin == true">
             <button v-if="order.status == 0" class="btn btn-primary" @click="updateOrder(1)">
                 <i class="fa-solid fa-trash"></i> Đã xử lý
             </button>
